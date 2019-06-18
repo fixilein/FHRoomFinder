@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="ROOM NAME"
+            android:text="@string/room_name_default"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="@android:string/status_bar_notification_info_overflow"
+            android:text="@string/room_number_default"
             android:textSize="16sp" />
     </LinearLayout>
 

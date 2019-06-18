@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fillRoomList();
 
         Toolbar tb = findViewById(R.id.toolbar);
-        tb.setTitle("Räume");
+        tb.setTitle(R.string.rooms);
         setSupportActionBar(tb);
     }
 
@@ -82,8 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.activity_main_menu, _menu);
 
-        MenuItem myActionMenuItem = _menu.findItem(R.id.search);
+        MenuItem myActionMenuItem = _menu.findItem(R.id.activity_main_menu_search);
         SearchView searchView = (SearchView) myActionMenuItem.getActionView();
+        searchView.setQueryHint(getString(R.string.room_name_or_number));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

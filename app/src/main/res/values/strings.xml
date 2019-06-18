@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FH Room Finder</string>
+    <string name="room_name_default">Room Name</string>
+    <string name="room_number_default" translatable="false">FH2.424</string>
+    <string name="rooms">Rooms</string>
+    <string name="room_name_or_number">Room name or number…</string>
+    <string name="search">Search</string>
+    <string name="about">About</string>
 </resources>

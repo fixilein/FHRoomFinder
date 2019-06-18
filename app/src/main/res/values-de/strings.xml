@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FH Room Finder</string>
+    <string name="room_name_default">Raum Name</string>
+    <string name="rooms">Räume</string>
+    <string name="room_name_or_number">Raum Name oder Nummer…</string>
+    <string name="about">Über diese App</string>
+    <string name="search">Suche</string>
+</resources>
