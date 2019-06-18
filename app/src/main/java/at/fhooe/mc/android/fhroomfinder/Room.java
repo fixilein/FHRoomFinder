@@ -1,7 +1,5 @@
 package at.fhooe.mc.android.fhroomfinder;
 
-import android.util.Log;
-
 public class Room {
     private int building, floor, number;
     private String name;
