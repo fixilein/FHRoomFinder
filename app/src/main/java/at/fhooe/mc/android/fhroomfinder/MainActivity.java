@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         List<Room> list = new LinkedList<>();
 
         list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb4));
-        // list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb3));
+        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb3));
 
         adapter = new RoomAdapter(this, list);
         adapter.addAll(list);

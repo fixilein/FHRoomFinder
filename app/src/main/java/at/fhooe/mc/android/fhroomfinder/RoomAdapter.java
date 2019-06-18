@@ -1,28 +1,23 @@
 package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class RoomAdapter extends ArrayAdapter<Room> {
 
-    List<Room> roomList;
-    ArrayList<Room> completeList;
+    List<Room> completeList;
 
     public RoomAdapter(Context _c, List<Room> _list) {
         super(_c, -1);
-        this.roomList = _list;
-        this.completeList = new ArrayList<>();
-        this.completeList.addAll(roomList);
+
+        this.completeList = _list;
     }
 
     @Override
@@ -32,10 +27,8 @@ public class RoomAdapter extends ArrayAdapter<Room> {
             _convertView = inflater.inflate(R.layout.list_room_item, null);
         }
 
-        if (roomList.size() <= _position)
-            return _convertView;
 
-        Room r = roomList.get(_position);
+        Room r = getItem(_position);
 
         TextView tv;
         tv = _convertView.findViewById(R.id.list_item_room_name);
@@ -49,15 +42,16 @@ public class RoomAdapter extends ArrayAdapter<Room> {
 
     public void filter(String _charText) {
         _charText = _charText.toLowerCase(Locale.getDefault());
-        roomList.clear();
+        clear();
 
         if (_charText.length() == 0) {
-            roomList.addAll(completeList);
+            addAll(completeList);
         } else {
             for (Room room : completeList) {
-                if (room.getName().toLowerCase(Locale.getDefault()).contains(_charText)) {
-                    roomList.add(room);
-                }
+                String name = room.getName().toLowerCase(Locale.getDefault()).replace(".", "");
+                String num = room.getFullNumber().replace(".", "");
+                if (name.contains(_charText) || num.contains(_charText))
+                    add(room);
             }
         }
         notifyDataSetChanged();
