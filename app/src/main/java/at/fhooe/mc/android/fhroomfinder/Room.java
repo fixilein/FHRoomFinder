@@ -14,7 +14,6 @@ public class Room {
     }
 
     public static Room fromLine(String _text) {
-        Log.i(MainActivity.TAG, _text);
         int startIndex = _text.indexOf("(FH");
         String substring = _text.substring(startIndex);
 

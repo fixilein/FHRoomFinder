@@ -29,7 +29,9 @@ public class MainActivity extends ListActivity {
     private void fillRoomList() {
         RoomAdapter adapter = new RoomAdapter(this);
 
-        List<Room> list = readRawTextFile(getApplicationContext(), R.raw.fh2eb4);
+        List<Room> list = new LinkedList<>();
+        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb4));
+        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb3));
 
         adapter.addAll(list);
         setListAdapter(adapter);
@@ -61,6 +63,6 @@ public class MainActivity extends ListActivity {
 
         Room room = (Room) list.getItem(_pos);
         Toast.makeText(this, "Clicked Room: " + room.getName() + " "
-                + room.getNumber(), Toast.LENGTH_SHORT).show();
+                + room.getFullNumber(), Toast.LENGTH_SHORT).show();
     }
 }
