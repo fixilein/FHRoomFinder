@@ -12,12 +12,11 @@ import java.util.Locale;
 
 public class RoomAdapter extends ArrayAdapter<Room> {
 
-    List<Room> completeList;
+    List<Room> list;
 
     public RoomAdapter(Context _c, List<Room> _list) {
         super(_c, -1);
-
-        this.completeList = _list;
+        list = _list;
     }
 
     @Override
@@ -26,7 +25,6 @@ public class RoomAdapter extends ArrayAdapter<Room> {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             _convertView = inflater.inflate(R.layout.list_room_item, null);
         }
-
 
         Room r = getItem(_position);
 
@@ -40,17 +38,18 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         return _convertView;
     }
 
-    public void filter(String _charText) {
-        _charText = _charText.toLowerCase(Locale.getDefault());
+    public void filter(String _s) {
+        _s = _s.toLowerCase(Locale.getDefault());
         clear();
 
-        if (_charText.length() == 0) {
-            addAll(completeList);
+        if (_s.length() == 0) {
+            addAll(list);
         } else {
-            for (Room room : completeList) {
+            for (Room room : list) {
                 String name = room.getName().toLowerCase(Locale.getDefault()).replace(".", "");
-                String num = room.getFullNumber().replace(".", "");
-                if (name.contains(_charText) || num.contains(_charText))
+                String num = room.getFullNumber().toLowerCase(Locale.getDefault());
+                String num2 = num.replace(".", "");
+                if (name.contains(_s) || num.contains(_s) || num2.contains(_s))
                     add(room);
             }
         }
