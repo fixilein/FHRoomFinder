@@ -4,11 +4,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-    <SearchView
-        android:id="@+id/activity_main_room_search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</FrameLayout>
+    tools:context=".MainActivity"/>
