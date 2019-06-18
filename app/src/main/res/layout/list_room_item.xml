@@ -12,6 +12,7 @@
             android:id="@+id/list_item_room_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
             android:text="ROOM NAME"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -20,6 +21,7 @@
             android:id="@+id/list_item_room_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
             android:text="@android:string/status_bar_notification_info_overflow"
             android:textSize="16sp" />
     </LinearLayout>

@@ -39,7 +39,7 @@ public class RoomAdapter extends ArrayAdapter<Room> {
     }
 
     public void filter(String _s) {
-        _s = _s.toLowerCase(Locale.getDefault());
+        _s = _s.trim().toLowerCase(Locale.getDefault()).replace(". ", ".");
         clear();
 
         if (_s.length() == 0) {

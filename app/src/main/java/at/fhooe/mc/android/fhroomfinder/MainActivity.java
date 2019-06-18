@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fillRoomList();
 
         Toolbar tb = findViewById(R.id.toolbar);
+        tb.setTitle("Räume");
         setSupportActionBar(tb);
     }
 
