@@ -17,7 +17,6 @@ public class RoomAdapter extends ArrayAdapter<Room> {
     public View getView(int _position, View _convertView, ViewGroup _parent) {
         if (_convertView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
             _convertView = inflater.inflate(R.layout.list_room_item, null);
         }
 
