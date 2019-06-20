@@ -64,11 +64,20 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/fhooe_hagenberg_campus_raumplan_fh2_ebene_4" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/activity_locator_floor_plan_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/activity_locator_circle_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
 
     </LinearLayout>
 
