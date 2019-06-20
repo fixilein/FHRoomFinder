@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class FloorPlanFragment extends Fragment {
 
@@ -36,7 +35,6 @@ public class FloorPlanFragment extends Fragment {
         super.onViewCreated(_view, _savedInstanceState);
 
         Room room = getArguments().getParcelable(FLOOR_FRAGMENT);
-        Toast.makeText(getContext(), room.getToken(), Toast.LENGTH_SHORT).show();
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
         Bitmap floorPlan = getFloorPlanBitmap(room);

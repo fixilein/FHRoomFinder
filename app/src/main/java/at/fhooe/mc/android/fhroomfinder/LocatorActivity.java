@@ -1,10 +1,12 @@
 package at.fhooe.mc.android.fhroomfinder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 public class LocatorActivity extends AppCompatActivity {
@@ -24,12 +26,20 @@ public class LocatorActivity extends AppCompatActivity {
 
         fillTextViews(r);
 
-
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
         t.replace(R.id.activity_locator_fragment_frame, FloorPlanFragment.newInstance(r));
         t.commit();
         t.addToBackStack(null);
+
+        View frame = findViewById(R.id.activity_locator_fragment_frame);
+        frame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LocatorActivity.this, FullscreenFloorPlanActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void fillTextViews(Room r) {
