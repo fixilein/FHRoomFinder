@@ -33,7 +33,7 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         tv.setText(r.getName());
 
         tv = _convertView.findViewById(R.id.list_item_room_number);
-        tv.setText(r.getFullNumber());
+        tv.setText(r.getToken());
 
         return _convertView;
     }
@@ -47,7 +47,7 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         } else {
             for (Room room : list) {
                 String name = room.getName().toLowerCase(Locale.getDefault()).replace(".", "");
-                String num = room.getFullNumber().toLowerCase(Locale.getDefault());
+                String num = room.getToken().toLowerCase(Locale.getDefault());
                 String num2 = num.replace(".", "");
                 if (name.contains(_s) || num.contains(_s) || num2.contains(_s))
                     add(room);

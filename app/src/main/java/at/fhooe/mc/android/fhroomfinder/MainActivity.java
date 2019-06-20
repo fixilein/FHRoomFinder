@@ -1,7 +1,9 @@
 package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -11,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,8 +24,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     static final String TAG = "FH_Room_Finder";
+    static final String ROOM_INTENT = "RoomIntent";
     private RoomAdapter adapter;
     private ListView listView;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -35,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar tb = findViewById(R.id.toolbar);
         tb.setTitle(R.string.rooms);
+        tb.setTitleTextColor(getColor(R.color.white));
+
         setSupportActionBar(tb);
     }
 
     private void fillRoomList() {
         listView = findViewById(R.id.activity_main_list_view);
-        List<Room> list = new LinkedList<>();
+        final List<Room> list = new LinkedList<>();
 
         list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb4));
         list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb3));
@@ -53,8 +58,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int _pos, long id) {
                 Room room = adapter.getItem(_pos);
-                Toast.makeText(getApplicationContext(), "Clicked Room: " + room.getName() + " "
-                        + room.getFullNumber(), Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getApplicationContext(), "Clicked Room: " + room.getName() + " "                        + room.getToken(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this, LocatorActivity.class);
+                i.putExtra(ROOM_INTENT, room);
+                startActivity(i);
             }
         });
     }
@@ -69,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             while ((line = buffreader.readLine()) != null) {
-                list.add(Room.fromLine(line));
+                list.add(Room.fromString(line));
             }
         } catch (IOException e) {
             return null;
@@ -83,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.activity_main_menu, _menu);
 
         MenuItem myActionMenuItem = _menu.findItem(R.id.activity_main_menu_search);
-        SearchView searchView = (SearchView) myActionMenuItem.getActionView();
+        searchView = (SearchView) myActionMenuItem.getActionView();
         searchView.setQueryHint(getString(R.string.room_name_or_number));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -94,15 +101,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String _s) {
-                if (TextUtils.isEmpty(_s)) {
+                if (TextUtils.isEmpty(_s)) { // TODO needed?
                     adapter.filter("");
-                    listView.clearTextFilter();
+                    listView.clearTextFilter(); // TODO try remove?
                 } else {
                     adapter.filter(_s);
                 }
                 return true;
             }
         });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.activity_main_menu_about) {
+            Intent i = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(i);
+        }
+
         return true;
     }
 }

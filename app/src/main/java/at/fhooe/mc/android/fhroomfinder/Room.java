@@ -1,6 +1,9 @@
 package at.fhooe.mc.android.fhroomfinder;
 
-public class Room {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Room implements Parcelable {
     private int building, floor, number;
     private String name;
 
@@ -11,7 +14,26 @@ public class Room {
         this.name = name;
     }
 
-    public static Room fromLine(String _text) {
+    protected Room(Parcel in) {
+        building = in.readInt();
+        floor = in.readInt();
+        number = in.readInt();
+        name = in.readString();
+    }
+
+    public static final Creator<Room> CREATOR = new Creator<Room>() {
+        @Override
+        public Room createFromParcel(Parcel in) {
+            return new Room(in);
+        }
+
+        @Override
+        public Room[] newArray(int size) {
+            return new Room[size];
+        }
+    };
+
+    public static Room fromString(String _text) {
         int startIndex = _text.indexOf("(FH");
         String substring = _text.substring(startIndex);
 
@@ -40,9 +62,20 @@ public class Room {
         return name;
     }
 
-    public String getFullNumber() { // TODO rename
+    public String getToken() {
         return "FH" + getBuilding() + "." + getFloor() + String.format("%02d", getNumber());
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(building);
+        dest.writeInt(floor);
+        dest.writeInt(number);
+        dest.writeString(name);
+    }
 }
