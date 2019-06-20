@@ -1,6 +1,5 @@
 package at.fhooe.mc.android.fhroomfinder;
 
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -26,7 +25,6 @@ public class FloorPlanFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater _inflater, ViewGroup _container, Bundle _savedInstanceState) {
-        // Inflate the layout for this fragment
         return _inflater.inflate(R.layout.fragment_floor_plan, _container, false);
     }
 
@@ -38,19 +36,17 @@ public class FloorPlanFragment extends Fragment {
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
         Bitmap floorPlan = getFloorPlanBitmap(room);
+        drawCircle(floorPlan, 1000, 1000);
+        iv.setImageBitmap(floorPlan);
+    }
 
-
-        // TODO auslagern
-        Canvas canvas = new Canvas(floorPlan);
+    private void drawCircle(Bitmap _floorPlan, int _x, int _y) {
+        Canvas canvas = new Canvas(_floorPlan);
         Paint paint = new Paint();
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(20);
-        int x = 1000;
-        int y = 1000;
-        canvas.drawCircle(x, y, 150, paint);
-
-        iv.setImageBitmap(floorPlan);
+        canvas.drawCircle(_x, _y, 150, paint);
     }
 
     private Bitmap getFloorPlanBitmap(Room _r) {
@@ -58,19 +54,29 @@ public class FloorPlanFragment extends Fragment {
         if (_r.getBuilding() == 2) {
             switch (_r.getFloor()) {
                 case 0:
-                    b = BitmapFactory.decodeResource(getResources(), R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_0).copy(Bitmap.Config.ARGB_8888, true);
+                    b = BitmapFactory.decodeResource(getResources(),
+                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_0)
+                            .copy(Bitmap.Config.ARGB_8888, true);
                     break;
                 case 1:
-                    b = BitmapFactory.decodeResource(getResources(), R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_1).copy(Bitmap.Config.ARGB_8888, true);
+                    b = BitmapFactory.decodeResource(getResources(),
+                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_1)
+                            .copy(Bitmap.Config.ARGB_8888, true);
                     break;
                 case 2:
-                    b = BitmapFactory.decodeResource(getResources(), R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_2).copy(Bitmap.Config.ARGB_8888, true);
+                    b = BitmapFactory.decodeResource(getResources(),
+                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_2)
+                            .copy(Bitmap.Config.ARGB_8888, true);
                     break;
                 case 3:
-                    b = BitmapFactory.decodeResource(getResources(), R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_3).copy(Bitmap.Config.ARGB_8888, true);
+                    b = BitmapFactory.decodeResource(getResources(),
+                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_3)
+                            .copy(Bitmap.Config.ARGB_8888, true);
                     break;
                 case 4:
-                    b = BitmapFactory.decodeResource(getResources(), R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_4).copy(Bitmap.Config.ARGB_8888, true);
+                    b = BitmapFactory.decodeResource(getResources(),
+                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_4)
+                            .copy(Bitmap.Config.ARGB_8888, true);
                     break;
                 default:
                     Log.e(MainActivity.TAG, "Unrecognized Floor");
