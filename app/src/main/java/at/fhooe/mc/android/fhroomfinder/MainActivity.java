@@ -3,7 +3,6 @@ package at.fhooe.mc.android.fhroomfinder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -49,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb4));
         list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb3));
+        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb2));
+        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb1));
+        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb0));
 
         adapter = new RoomAdapter(this, list);
         adapter.addAll(list);
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int _pos, long id) {
                 Room room = adapter.getItem(_pos);
-                //  Toast.makeText(getApplicationContext(), "Clicked Room: " + room.getName() + " "                        + room.getToken(), Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(MainActivity.this, LocatorActivity.class);
                 i.putExtra(ROOM_INTENT, room);
                 startActivity(i);
