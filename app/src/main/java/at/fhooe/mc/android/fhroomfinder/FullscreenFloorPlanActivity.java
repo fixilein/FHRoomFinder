@@ -3,6 +3,8 @@ package at.fhooe.mc.android.fhroomfinder;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -112,6 +114,14 @@ public class FullscreenFloorPlanActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
+        Room room = getIntent().getParcelableExtra(LocatorActivity.ROOM_FULLSCREEN);
+
+        FragmentManager mgr = getSupportFragmentManager();
+        FragmentTransaction t = mgr.beginTransaction();
+        t.replace(R.id.activity_fullscreen_floor_plan_frame, FloorPlanFragment.newInstance(room));
+        t.commit();
+
     }
 
     @Override

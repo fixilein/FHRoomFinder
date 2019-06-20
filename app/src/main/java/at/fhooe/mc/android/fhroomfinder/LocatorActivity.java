@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class LocatorActivity extends AppCompatActivity {
 
+    static final String ROOM_FULLSCREEN = "FullscreenRoomToShow";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +24,7 @@ public class LocatorActivity extends AppCompatActivity {
         setSupportActionBar(tb);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Room r = getIntent().getParcelableExtra(MainActivity.ROOM_INTENT);
+        final Room r = getIntent().getParcelableExtra(MainActivity.ROOM_INTENT);
 
         fillTextViews(r);
 
@@ -30,13 +32,13 @@ public class LocatorActivity extends AppCompatActivity {
         FragmentTransaction t = mgr.beginTransaction();
         t.replace(R.id.activity_locator_fragment_frame, FloorPlanFragment.newInstance(r));
         t.commit();
-        t.addToBackStack(null);
 
         View frame = findViewById(R.id.activity_locator_fragment_frame);
         frame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(LocatorActivity.this, FullscreenFloorPlanActivity.class);
+                i.putExtra(ROOM_FULLSCREEN, r);
                 startActivity(i);
             }
         });
