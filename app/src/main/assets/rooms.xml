@@ -193,19 +193,124 @@
         <x>200</x>
         <y>600</y>
     </room>
-    <!--
+    <!-- TEMPLATE
     <room>
         <name></name>
         <tok></tok>
         <x></x>
         <y></y>
     </room>
-
     -->
-
     <!--FH2 Ebene 3-->
     <!--FH2 Ebene 2-->
     <!--FH2 Ebene 1-->
-    <!--FH2 Ebene 0-->
-
+    <room>
+        <name>Bandproberaum</name>
+        <tok>FH2.111</tok>
+        <x>500</x>
+        <y>800</y>
+    </room>
+    <room>
+        <name>Batterieraum</name>
+        <tok>FH2.112</tok>
+        <x>400</x>
+        <y>800</y>
+    </room>
+    <room>
+        <name>Elektrohauptverteiler</name>
+        <tok>FH2.110</tok>
+        <x>500</x>
+        <y>600</y>
+    </room>
+    <room>
+        <name>Erste Hilfe</name>
+        <tok>FH2.113</tok>
+        <x>400</x>
+        <y>800</y>
+    </room>
+    <room>
+        <name>HYPE MTD Hyperraum</name>
+        <tok>FH2.117</tok>
+        <x>200</x>
+        <y>1230</y>
+    </room>
+    <room>
+        <name>Server- und Netzwerkraum</name>
+        <tok>FH2.115</tok>
+        <x>440</x>
+        <y>1200</y>
+    </room>
+    <room>
+        <name>SH02 HSD Seminarraum</name>
+        <tok>FH2.118</tok>
+        <x>200</x>
+        <y>1050</y>
+    </room>
+    <room>
+        <name>WH01 HSD Werkstatt</name>
+        <tok>FH2.104</tok>
+        <x>200</x>
+        <y>950</y>
+    </room>
+    <room>
+        <name>Werkstatt Hausmeister</name>
+        <tok>FH2.106</tok>
+        <x>200</x>
+        <y>790</y>
+    </room>
+    <!--FH2 Ebene 0 -->
+    <room>
+        <name>Atikon HS4</name>
+        <tok>FH2.026</tok>
+        <x>1000</x>
+        <y>1000</y>
+    </room>
+    <room>
+        <name>bet-at-home HS3</name>
+        <tok>FH2.025</tok>
+        <x>1300</x>
+        <y>1000</y>
+    </room>
+    <room>
+        <name>Haustechnik</name>
+        <tok>FH2.015</tok>
+        <x>1150</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>Haustechnik</name>
+        <tok>FH2.016</tok>
+        <x>1150</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>karriere.at AM - Audimax</name>
+        <tok>FH2.020</tok>
+        <x>1750</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>Pub Loungerie</name>
+        <tok>FH2.004</tok>
+        <x>220</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>runtastic HS5</name>
+        <tok>FH2.027</tok>
+        <x>510</x>
+        <y>1030</y>
+    </room>
+    <room>
+        <name>VR Veranstaltungsraum</name>
+        <tok>FH2.005</tok>
+        <x>550</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>World4You HS6</name>
+        <tok>FH2.028</tok>
+        <x>1300</x>
+        <y>1000</y>
+    </room>
 </rooms>

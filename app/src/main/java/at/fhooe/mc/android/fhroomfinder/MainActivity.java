@@ -62,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* DEBUG
+        /* DEBUG - test coords */
         Intent i = new Intent(MainActivity.this, LocatorActivity.class);
         i.putExtra(ROOM_INTENT, list.get(list.size()-1));
        startActivity(i);
-       */
+
 
     }
 
