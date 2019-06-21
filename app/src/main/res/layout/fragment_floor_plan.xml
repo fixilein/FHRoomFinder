@@ -9,7 +9,7 @@
         android:id="@+id/fragment_floor_plan_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="Floor Plan" />
+        android:contentDescription="@string/floor_plan" />
 
 </FrameLayout>
 

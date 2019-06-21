@@ -36,11 +36,14 @@ public class FloorPlanFragment extends Fragment {
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
         Bitmap floorPlan = getFloorPlanBitmap(room);
-        drawCircle(floorPlan, room.getX(), room.getY());
+        float scale = getResources().getDisplayMetrics().density / 2.75f;
+        float x = room.getX() * scale;
+        float y = room.getY() * scale;
+        drawCircle(floorPlan, x, y);
         iv.setImageBitmap(floorPlan);
     }
 
-    private void drawCircle(Bitmap _floorPlan, int _x, int _y) {
+    private void drawCircle(Bitmap _floorPlan, float _x, float _y) {
         Canvas canvas = new Canvas(_floorPlan);
         Paint paint = new Paint();
         paint.setColor(Color.RED);
@@ -84,6 +87,7 @@ public class FloorPlanFragment extends Fragment {
             }
         }
         return b;
+        // return Bitmap.createScaledBitmap(b ,1,1, false);
     }
 
     public static FloorPlanFragment newInstance(Parcelable _p) {

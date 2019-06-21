@@ -26,7 +26,6 @@ public class LocatorActivity extends AppCompatActivity {
         setSupportActionBar(tb);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         fillTextViews(r);
 
         FragmentManager mgr = getSupportFragmentManager();

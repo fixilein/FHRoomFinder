@@ -35,18 +35,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fillRoomList();
-
         Toolbar tb = findViewById(R.id.toolbar);
         tb.setTitle(R.string.rooms);
         tb.setTitleTextColor(getColor(R.color.white));
-
         setSupportActionBar(tb);
+
+        fillRoomList();
     }
 
     private void fillRoomList() {
         list = new LinkedList<>();
-
         parseXml();
 
         adapter = new RoomAdapter(this, list);
@@ -154,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(i);
         }
-
         return true;
     }
 }
