@@ -61,13 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        /* DEBUG - test coords */
-        Intent i = new Intent(MainActivity.this, LocatorActivity.class);
-        i.putExtra(ROOM_INTENT, list.get(list.size()-1));
-       startActivity(i);
-
-
     }
 
     private void parseXml() {
