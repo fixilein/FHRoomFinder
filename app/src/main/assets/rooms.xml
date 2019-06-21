@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rooms>
+    <!--FH2 Ebene 4-->
+    <room>
+        <name>BIO SI Biometrielabor</name>
+        <tok>FH2.426</tok>
+        <x>1700</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>BIOLAB MBI</name>
+        <tok>FH2.434</tok>
+        <x>1920</x>
+        <y>670</y>
+    </room>
+    <room>
+        <name>Besprechungsraum 4</name>
+        <tok>FH2.407</tok>
+        <x>200</x>
+        <y>440</y>
+    </room>
+    <room>
+        <name>CLICK &amp; LEARN K.lab4 KWM Projektlabor 4</name>
+        <tok>FH2.450</tok>
+        <x>1240</x>
+        <y>1150</y>
+    </room>
+    <room>
+        <name>DMS MTD Digital Masters Studio</name>
+        <tok>FH2.456</tok>
+        <x>600</x>
+        <y>1200</y>
+    </room>
+    <room>
+        <name>ELT MTD Elektronik Labor</name>
+        <tok>FH2.405</tok>
+        <x>200</x>
+        <y>850</y>
+    </room>
+    <room>
+        <name>FRG MTD Fruit Garden</name>
+        <tok>FH2.421</tok>
+        <x>670</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>GDS MTD Game Development Studio</name>
+        <tok>FH2.414</tok>
+        <x>500</x>
+        <y>970</y>
+    </room>
+    <room>
+        <name>GST MTD Graphic Studio</name>
+        <tok>FH2.409</tok>
+        <x>430</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>INT SI Internes Projektlabor</name>
+        <tok>FH2.437</tok>
+        <x>1350</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>K.lab2 KWM Labor 2</name>
+        <tok>FH2.448</tok>
+        <x>1470</x>
+        <y>1150</y>
+    </room>
+    <room>
+        <name>K.lab3 KWM Labor 3</name>
+        <tok>FH2.446</tok>
+        <x>1770</x>
+        <y>1100</y>
+    </room>
+    <room>
+        <name>MTD Lager Equipment</name>
+        <tok>FH2.404</tok>
+        <x>200</x>
+        <y>980</y>
+    </room>
+    <room>
+        <name>Netcetera L1.ME M&amp;E Labor 1</name>
+        <tok>FH2.422</tok>
+        <x>900</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>L2.ME M&amp;E Labor 2</name>
+        <tok>FH2.424</tok>
+        <x>1250</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>NWL MTD Netzwerklabor</name>
+        <tok>FH2.452</tok>
+        <x>1000</x>
+        <y>1170</y>
+    </room>
+    <room>
+        <name>PL1.ME M&amp;E Projektlabor 1</name>
+        <tok>FH2.440</tok>
+        <x>820</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>PL2.ME M&amp;E Maker Lab</name>
+        <tok>FH2.441</tok>
+        <x>650</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>PL3.ME M&amp;E Smart Energy Lab</name>
+        <tok>FH2.412</tok>
+        <x>500</x>
+        <y>650</y>
+    </room>
+    <room>
+        <name>PL4.ME M&amp;E Automotive Lab</name>
+        <tok>FH2.413</tok>
+        <x>500</x>
+        <y>820</y>
+    </room>
+    <room>
+        <name>PLS1 SE Projektlabor 1</name>
+        <tok>FH2.438</tok>
+        <x>1000</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>PLS2 SE Projektlabor 2</name>
+        <tok>FH2.439</tok>
+        <x>1170</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>PRO SI Projektlabor</name>
+        <tok>FH2.436</tok>
+        <x>1500</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>SEC SI Security Projektlabor</name>
+        <tok>FH2.435</tok>
+        <x>1670</x>
+        <y>500</y>
+    </room>
+    <room>
+        <name>SOL SI Solarium</name>
+        <tok>FH2.425</tok>
+        <x>1480</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>SR1.ME M&amp;E Seminarraum</name>
+        <tok>FH2.419</tok>
+        <x>200</x>
+        <y>1080</y>
+    </room>
+    <room>
+        <name>SR2.ME M&amp;E Seminarraum 2</name>
+        <tok>FH2.454</tok>
+        <x>780</x>
+        <y>1190</y>
+    </room>
+    <room>
+        <name>SRC2 SI Seminarraum 2</name>
+        <tok>FH2.427</tok>
+        <x>1920</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>SUB MTD Submarine</name>
+        <tok>FH2.417</tok>
+        <x>450</x>
+        <y>1240</y>
+    </room>
+    <room>
+        <name>U.lab Usability Labor</name>
+        <tok>FH2.447</tok>
+        <x>1650</x>
+        <y>1130</y>
+    </room>
+    <room>
+        <name>UST MTD Universal Studio</name>
+        <tok>FH2.408</tok>
+        <x>220</x>
+        <y>260</y>
+    </room>
+    <room>
+        <name>WHS MTD Warehouse</name>
+        <tok>FH2.406</tok>
+        <x>200</x>
+        <y>600</y>
+    </room>
+    <!--
+    <room>
+        <name></name>
+        <tok></tok>
+        <x></x>
+        <y></y>
+    </room>
+
+    -->
+
+    <!--FH2 Ebene 3-->
+    <!--FH2 Ebene 2-->
+    <!--FH2 Ebene 1-->
+    <!--FH2 Ebene 0-->
+
+</rooms>

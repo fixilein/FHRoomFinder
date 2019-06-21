@@ -1,6 +1,5 @@
 package at.fhooe.mc.android.fhroomfinder;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import java.io.BufferedReader;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private RoomAdapter adapter;
     private ListView listView;
     SearchView searchView;
+    List<Room> list;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -43,17 +45,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fillRoomList() {
-        listView = findViewById(R.id.activity_main_list_view);
-        final List<Room> list = new LinkedList<>();
+        list = new LinkedList<>();
 
-        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb4));
-        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb3));
-        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb2));
-        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb1));
-        list.addAll(readRawTextFile(getApplicationContext(), R.raw.fh2eb0));
+        parseXml();
 
         adapter = new RoomAdapter(this, list);
         adapter.addAll(list);
+        listView = findViewById(R.id.activity_main_list_view);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,24 +63,60 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        /* DEBUG
+        Intent i = new Intent(MainActivity.this, LocatorActivity.class);
+        i.putExtra(ROOM_INTENT, list.get(list.size()-1));
+       startActivity(i);
+       */
+
     }
 
-    public static List<Room> readRawTextFile(Context _context, int _resId) {
-        List<Room> list = new LinkedList<>();
-
-        InputStream inputStream = _context.getResources().openRawResource(_resId);
-        InputStreamReader inputreader = new InputStreamReader(inputStream);
-        BufferedReader buffreader = new BufferedReader(inputreader);
-        String line;
-
+    private void parseXml() {
+        XmlPullParserFactory parserFactory;
         try {
-            while ((line = buffreader.readLine()) != null) {
-                list.add(Room.fromString(line));
-            }
+            parserFactory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = parserFactory.newPullParser();
+            InputStream is = getAssets().open("rooms.xml");
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(is, null);
+
+            processParsing(parser);
+        } catch (XmlPullParserException e) {
         } catch (IOException e) {
-            return null;
         }
-        return list;
+    }
+
+    private void processParsing(XmlPullParser _parser) throws IOException, XmlPullParserException {
+        Room currentRoom = null;
+        int eventType = _parser.getEventType();
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            String eltName = null;
+            if (eventType == XmlPullParser.START_TAG) {
+                eltName = _parser.getName();
+
+                if ("room".equals(eltName)) {
+                    currentRoom = new Room();
+                    list.add(currentRoom);
+                } else if (currentRoom != null) {
+                    if ("name".equals(eltName)) {
+                        currentRoom.setName(_parser.nextText());
+                    } else if ("tok".equals(eltName)) {
+                        String s = _parser.nextText();
+                        currentRoom.setBuilding(Character.getNumericValue(s.charAt(2)));
+                        currentRoom.setFloor(Character.getNumericValue(s.charAt(4)));
+                        currentRoom.setNumber(Character.getNumericValue(s.charAt(5)) * 10 +
+                                Character.getNumericValue(s.charAt(6)));
+                    } else if ("x".equals(eltName)) {
+                        currentRoom.setX(Integer.valueOf(_parser.nextText()));
+                    } else if ("y".equals(eltName)) {
+                        currentRoom.setY(Integer.valueOf(_parser.nextText()));
+                    }
+                }
+            }
+            eventType = _parser.next();
+        }
+
     }
 
     @Override

@@ -18,13 +18,14 @@ public class LocatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locator);
 
+        final Room r = getIntent().getParcelableExtra(MainActivity.ROOM_INTENT);
+
         Toolbar tb = findViewById(R.id.locator_toolbar);
-        tb.setTitle(R.string.locator);
+        tb.setTitle(r.getName());
         tb.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(tb);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final Room r = getIntent().getParcelableExtra(MainActivity.ROOM_INTENT);
 
         fillTextViews(r);
 

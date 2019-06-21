@@ -6,12 +6,15 @@ import android.os.Parcelable;
 public class Room implements Parcelable {
     private int building, floor, number;
     private String name;
+    private int x, y;
 
-    public Room(int building, int floor, int number, String name) {
-        this.building = building;
-        this.floor = floor;
-        this.number = number;
-        this.name = name;
+    public Room(int _building, int _floor, int _number, String _name, int _x, int _y) {
+        building = _building;
+        floor = _floor;
+        number = _number;
+        name = _name;
+        x = _x;
+        y = _y;
     }
 
     protected Room(Parcel in) {
@@ -19,6 +22,8 @@ public class Room implements Parcelable {
         floor = in.readInt();
         number = in.readInt();
         name = in.readString();
+        x = in.readInt();
+        y = in.readInt();
     }
 
     public static final Creator<Room> CREATOR = new Creator<Room>() {
@@ -33,17 +38,32 @@ public class Room implements Parcelable {
         }
     };
 
-    public static Room fromString(String _text) {
-        int startIndex = _text.indexOf("(FH");
-        String substring = _text.substring(startIndex);
+    public void setBuilding(int building) {
+        this.building = building;
+    }
 
-        String name = _text.replace(_text.substring(startIndex - 1), "");
-        int building = Character.getNumericValue(substring.charAt(3));
-        int floor = Character.getNumericValue(substring.charAt(5));
-        int number = Character.getNumericValue(substring.charAt(6)) * 10 +
-                Character.getNumericValue(substring.charAt(7));
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
 
-        return new Room(building, floor, number, name);
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public Room() {
+
     }
 
     public int getBuilding() {
@@ -62,6 +82,14 @@ public class Room implements Parcelable {
         return name;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public String getToken() {
         return "FH" + getBuilding() + "." + getFloor() + String.format("%02d", getNumber());
     }
@@ -77,5 +105,7 @@ public class Room implements Parcelable {
         dest.writeInt(floor);
         dest.writeInt(number);
         dest.writeString(name);
+        dest.writeInt(x);
+        dest.writeInt(y);
     }
 }

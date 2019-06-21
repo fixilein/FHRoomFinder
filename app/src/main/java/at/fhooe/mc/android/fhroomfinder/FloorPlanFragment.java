@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -37,16 +36,9 @@ public class FloorPlanFragment extends Fragment {
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
         Bitmap floorPlan = getFloorPlanBitmap(room);
-        Point p = getPosPoint(room);
-        drawCircle(floorPlan, p.x, p.y);
+        drawCircle(floorPlan, room.getX(), room.getY());
         iv.setImageBitmap(floorPlan);
     }
-
-    private Point getPosPoint(Room _r) {
-        return new Point(200, 440);
-    }
-
-
 
     private void drawCircle(Bitmap _floorPlan, int _x, int _y) {
         Canvas canvas = new Canvas(_floorPlan);
