@@ -17,13 +17,13 @@ public class Room implements Parcelable {
         y = _y;
     }
 
-    protected Room(Parcel in) {
-        building = in.readInt();
-        floor = in.readInt();
-        number = in.readInt();
-        name = in.readString();
-        x = in.readInt();
-        y = in.readInt();
+    protected Room(Parcel _in) {
+        building = _in.readInt();
+        floor = _in.readInt();
+        number = _in.readInt();
+        name = _in.readString();
+        x = _in.readInt();
+        y = _in.readInt();
     }
 
     public static final Creator<Room> CREATOR = new Creator<Room>() {
@@ -100,12 +100,12 @@ public class Room implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(building);
-        dest.writeInt(floor);
-        dest.writeInt(number);
-        dest.writeString(name);
-        dest.writeInt(x);
-        dest.writeInt(y);
+    public void writeToParcel(Parcel _dest, int _flags) {
+        _dest.writeInt(building);
+        _dest.writeInt(floor);
+        _dest.writeInt(number);
+        _dest.writeString(name);
+        _dest.writeInt(x);
+        _dest.writeInt(y);
     }
 }

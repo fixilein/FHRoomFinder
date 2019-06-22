@@ -7,9 +7,11 @@
     <string name="search">Search</string>
     <string name="about">About</string>
     <string name="floor">Floor</string>
-    <string name="building">Building</string>
+    <string name="building">FH Building</string>
     <string name="locator">Locator</string>
 
-    <string name="title_activity_fullscreen_floor_plan">FullscreenFloorPlanActivity</string>
+    <string name="title_activity_fullscreen_floor_plan" translatable="false">FullscreenFloorPlanActivity</string>
     <string name="floor_plan">Floor Plan</string>
+    <string name="choose_app">Choose an app</string>
+    <string name="share_text">Here is the plan for %s.</string>
 </resources>

@@ -19,6 +19,8 @@ import android.widget.ImageView;
 public class FloorPlanFragment extends Fragment {
 
     private static final String FLOOR_FRAGMENT = "FloorFragmentParcelable";
+    Bitmap image;
+    Room room;
 
     public FloorPlanFragment() {
     }
@@ -32,7 +34,7 @@ public class FloorPlanFragment extends Fragment {
     public void onViewCreated(@NonNull View _view, @Nullable Bundle _savedInstanceState) {
         super.onViewCreated(_view, _savedInstanceState);
 
-        Room room = getArguments().getParcelable(FLOOR_FRAGMENT);
+        room = getArguments().getParcelable(FLOOR_FRAGMENT);
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
         Bitmap floorPlan = getFloorPlanBitmap(room);
@@ -41,6 +43,7 @@ public class FloorPlanFragment extends Fragment {
         float y = room.getY() * scale;
         drawCircle(floorPlan, x, y);
         iv.setImageBitmap(floorPlan);
+        image = floorPlan;
     }
 
     private void drawCircle(Bitmap _floorPlan, float _x, float _y) {
@@ -96,6 +99,14 @@ public class FloorPlanFragment extends Fragment {
         bundle.putParcelable(FLOOR_FRAGMENT, _p);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public Room getRoom() {
+        return room;
     }
 
 }

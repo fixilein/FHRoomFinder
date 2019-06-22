@@ -7,6 +7,9 @@
     <string name="about">Über diese App</string>
     <string name="search">Suche</string>
     <string name="floor">Ebene</string>
-    <string name="building">Gebäude</string>
+    <string name="building">FH Gebäude</string>
     <string name="locator">Finde den Raum</string>
+    <string name="choose_app">App auswählen</string>
+    <string name="floor_plan">Ruam Plan</string>
+    <string name="share_text">Hier ist der Raumplan für %s.</string>
 </resources>

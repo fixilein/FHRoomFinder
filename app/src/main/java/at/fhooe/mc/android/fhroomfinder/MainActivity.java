@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -107,16 +106,18 @@ public class MainActivity extends AppCompatActivity {
             }
             eventType = _parser.next();
         }
+    }
+
+    private void calendar() {
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu _menu) {
-
         getMenuInflater().inflate(R.menu.activity_main_menu, _menu);
 
-        MenuItem myActionMenuItem = _menu.findItem(R.id.activity_main_menu_search);
-        searchView = (SearchView) myActionMenuItem.getActionView();
+        MenuItem menuItemSearch = _menu.findItem(R.id.activity_main_menu_search);
+        searchView = (SearchView) menuItemSearch.getActionView();
         searchView.setQueryHint(getString(R.string.room_name_or_number));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -127,12 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String _s) {
-                if (TextUtils.isEmpty(_s)) { // TODO needed?
-                    adapter.filter("");
-                    listView.clearTextFilter(); // TODO try remove?
-                } else {
-                    adapter.filter(_s);
-                }
+                adapter.filter(_s);
                 return true;
             }
         });
