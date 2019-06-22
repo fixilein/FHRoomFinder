@@ -10,6 +10,7 @@
     <string name="building">FH Gebäude</string>
     <string name="locator">Finde den Raum</string>
     <string name="choose_app">App auswählen</string>
-    <string name="floor_plan">Ruam Plan</string>
-    <string name="share_text">Hier ist der Raumplan für %s.</string>
+    <string name="floor_plan">Raum Plan</string>
+    <string name="share_text">Hier ist der Standort von %s.</string>
+    <string name="about_text">Diese App wurde von Felix Tröbinger entwickelt.\n\nDiese App ist nicht an die Fachhochschule Oberösterreich, Campus Hagenberg angehörig.</string>
 </resources>

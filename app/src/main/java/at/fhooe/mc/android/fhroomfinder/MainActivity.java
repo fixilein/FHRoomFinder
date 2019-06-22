@@ -108,10 +108,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void calendar() {
-
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu _menu) {
         getMenuInflater().inflate(R.menu.activity_main_menu, _menu);
@@ -136,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.activity_main_menu_about) {
+    public boolean onOptionsItemSelected(MenuItem _item) {
+        if (_item.getItemId() == R.id.activity_main_menu_about) {
             Intent i = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(i);
         }

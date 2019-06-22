@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
 public class LocatorActivity extends AppCompatActivity {
 
     static final String ROOM_FULLSCREEN = "FullscreenRoomToShow";
@@ -123,6 +122,5 @@ public class LocatorActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(shareIntent, getString(R.string.choose_app)));
         }
     }
-
 
 }

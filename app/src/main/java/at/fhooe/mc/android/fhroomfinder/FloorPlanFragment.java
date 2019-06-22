@@ -19,8 +19,8 @@ import android.widget.ImageView;
 public class FloorPlanFragment extends Fragment {
 
     private static final String FLOOR_FRAGMENT = "FloorFragmentParcelable";
-    Bitmap image;
-    Room room;
+    private Bitmap image;
+    private Room room;
 
     public FloorPlanFragment() {
     }
