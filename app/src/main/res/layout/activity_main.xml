@@ -21,9 +21,20 @@
             android:id="@+id/activity_main_selection_frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/light_grey"
             android:paddingHorizontal="4dp">
 
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/activity_main_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="6dp"
+            android:text="@string/rooms"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/activity_main_list_view"

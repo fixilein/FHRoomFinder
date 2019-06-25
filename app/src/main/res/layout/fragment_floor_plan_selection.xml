@@ -9,20 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingHorizontal="4dp"
         android:paddingBottom="20dp">
 
         <TextView
             android:id="@+id/fragment_floor_plan_selection_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="6dp"
             android:text="@string/select_floor_plan_to_view"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="8dp">
 
             <Spinner
                 android:id="@+id/fragment_floor_plan_selection_spinner_building"
@@ -41,8 +46,11 @@
 
         <Button
             android:id="@+id/fragment_floor_plan_selection_button_submit"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal|center_vertical"
             android:text="@string/go" />
 
     </LinearLayout>

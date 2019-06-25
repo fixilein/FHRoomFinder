@@ -15,7 +15,7 @@
     <string name="choose_app">Choose an app</string>
     <string name="share_text">Here is the location of %s.</string>
     <string name="about_text">This app was developed by Felix Tröbinger.\n\nThis app is not affiliated with University of Applied Sciences Upper Austria, Campus Hagenberg.</string>
-    <string name="select_floor_plan_to_view">Select Floor Plan to view</string>
+    <string name="select_floor_plan_to_view">Select floor plan</string>
     <string name="go">Go</string>
 
 </resources>

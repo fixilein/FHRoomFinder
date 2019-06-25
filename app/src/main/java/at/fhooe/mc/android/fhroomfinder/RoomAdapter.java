@@ -31,6 +31,7 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         TextView tv;
         tv = _convertView.findViewById(R.id.list_item_room_name);
         tv.setText(r.getName());
+        tv.setMaxLines(1);
 
         tv = _convertView.findViewById(R.id.list_item_room_number);
         tv.setText(r.getToken());

@@ -40,12 +40,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar tb = findViewById(R.id.toolbar);
-        tb.setTitle(R.string.rooms);
+        tb.setTitle(R.string.app_name);
         tb.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(tb);
 
         fillRoomList();
-
         enableSelectionFragment(true);
     }
 

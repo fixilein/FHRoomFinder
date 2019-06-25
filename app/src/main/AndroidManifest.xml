@@ -13,7 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".FullscreenFloorPlanActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensor"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen_floor_plan"
             android:parentActivityName=".LocatorActivity"

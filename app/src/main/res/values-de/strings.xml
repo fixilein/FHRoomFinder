@@ -13,4 +13,6 @@
     <string name="floor_plan">Raum Plan</string>
     <string name="share_text">Hier ist der Standort von %s.</string>
     <string name="about_text">Diese App wurde von Felix Tröbinger entwickelt.\n\nDiese App ist nicht der Fachhochschule Oberösterreich, Campus Hagenberg angehörig.</string>
+    <string name="select_floor_plan_to_view">Ebenenplan auswählen</string>
+    <string name="go">Anzeigen</string>
 </resources>

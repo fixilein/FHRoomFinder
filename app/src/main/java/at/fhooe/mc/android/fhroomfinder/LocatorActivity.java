@@ -81,9 +81,6 @@ public class LocatorActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.activity_locator_menu, _menu);
 
         MenuItem menuItemShare = _menu.findItem(R.id.activity_locator_menu_share);
-        // Fetch and store ShareActionProvider (FROM ANDROID DEV)
-//        shareActionProvider = (ShareActionProvider) menuItemShare.getActionProvider();
-
         menuItemShare.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

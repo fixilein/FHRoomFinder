@@ -58,8 +58,6 @@ public class FloorPlanSelectionFragment extends Fragment implements AdapterView.
                 startActivity(i);
             }
         });
-
-
     }
 
     @Override
