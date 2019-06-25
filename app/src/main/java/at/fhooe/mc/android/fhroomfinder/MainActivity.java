@@ -51,12 +51,15 @@ public class MainActivity extends AppCompatActivity {
     private void enableSelectionFragment(boolean _select) {
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
+        View sep = findViewById(R.id.activity_main_separator);
         if (_select) {
             t.replace(R.id.activity_main_selection_frame, new FloorPlanSelectionFragment());
+            sep.setVisibility(View.VISIBLE);
         } else {
             Fragment fragmentById = getSupportFragmentManager().findFragmentById(R.id.activity_main_selection_frame);
             if (fragmentById != null)
                 t.remove(fragmentById);
+            sep.setVisibility(View.GONE);
         }
         t.commit();
     }

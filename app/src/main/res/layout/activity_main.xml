@@ -10,7 +10,6 @@
         android:background="@color/colorPrimary"
         android:elevation="4dp" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,8 +22,13 @@
             android:layout_height="wrap_content"
             android:background="@color/light_grey"
             android:paddingHorizontal="4dp">
-
         </FrameLayout>
+
+        <View
+            android:id="@+id/activity_main_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/activity_main_list_title"
