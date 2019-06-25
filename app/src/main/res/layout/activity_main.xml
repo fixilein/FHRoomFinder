@@ -11,11 +11,25 @@
         android:elevation="4dp" />
 
 
-    <ListView
-        android:id="@+id/activity_main_list_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar" />
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/activity_main_selection_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp">
+
+        </FrameLayout>
+
+        <ListView
+            android:id="@+id/activity_main_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 
 </RelativeLayout>

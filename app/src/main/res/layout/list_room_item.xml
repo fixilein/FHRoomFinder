@@ -7,8 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="8dp">
+        android:paddingVertical="4dp">
 
         <TextView
             android:id="@+id/list_item_room_name"

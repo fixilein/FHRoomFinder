@@ -2,6 +2,9 @@ package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     static final String TAG = "FH_Room_Finder";
     static final String ROOM_INTENT = "RoomIntent";
+    public static final String FLOOR_INTENT = "Floor_section_toLocator";
+    public static final String BUILDING_INTENT = "building_section_toLocator";
     private RoomAdapter adapter;
     private ListView listView;
     SearchView searchView;
@@ -40,6 +45,21 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(tb);
 
         fillRoomList();
+
+        enableSelectionFragment(true);
+    }
+
+    private void enableSelectionFragment(boolean _select) {
+        FragmentManager mgr = getSupportFragmentManager();
+        FragmentTransaction t = mgr.beginTransaction();
+        if (_select) {
+            t.replace(R.id.activity_main_selection_frame, new FloorPlanSelectionFragment());
+        } else {
+            Fragment fragmentById = getSupportFragmentManager().findFragmentById(R.id.activity_main_selection_frame);
+            if (fragmentById != null)
+                t.remove(fragmentById);
+        }
+        t.commit();
     }
 
     private void fillRoomList() {
@@ -125,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String _s) {
                 adapter.filter(_s);
+                if (_s.equals("")) enableSelectionFragment(true);
+                else enableSelectionFragment(false);
                 return true;
             }
         });

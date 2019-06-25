@@ -21,6 +21,7 @@ public class FloorPlanFragment extends Fragment {
     private static final String FLOOR_FRAGMENT = "FloorFragmentParcelable";
     private Bitmap image;
     private Room room;
+    private int building, floor;
 
     public FloorPlanFragment() {
     }
@@ -35,15 +36,23 @@ public class FloorPlanFragment extends Fragment {
         super.onViewCreated(_view, _savedInstanceState);
 
         room = getArguments().getParcelable(FLOOR_FRAGMENT);
+        building = getArguments().getInt(MainActivity.BUILDING_INTENT);
+        floor = getArguments().getInt(MainActivity.FLOOR_INTENT);
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
-        Bitmap floorPlan = getFloorPlanBitmap(room);
-        float scale = getResources().getDisplayMetrics().density / 2.75f;
-        float x = room.getX() * scale;
-        float y = room.getY() * scale;
-        drawCircle(floorPlan, x, y);
-        iv.setImageBitmap(floorPlan);
-        image = floorPlan;
+        if (room != null) {
+            Bitmap floorPlan = getFloorPlanBitmap(room);
+            float scale = getResources().getDisplayMetrics().density / 2.75f;
+            float x = room.getX() * scale;
+            float y = room.getY() * scale;
+            drawCircle(floorPlan, x, y);
+            iv.setImageBitmap(floorPlan);
+            image = floorPlan;
+        } else {
+            Bitmap floorPlan = getFloorPlanBitmap(building, floor);
+            iv.setImageBitmap(floorPlan);
+            image = floorPlan;
+        }
     }
 
     private void drawCircle(Bitmap _floorPlan, float _x, float _y) {
@@ -56,47 +65,36 @@ public class FloorPlanFragment extends Fragment {
     }
 
     private Bitmap getFloorPlanBitmap(Room _r) {
-        Bitmap b = null;
-        if (_r.getBuilding() == 2) {
-            switch (_r.getFloor()) {
-                case 0:
-                    b = BitmapFactory.decodeResource(getResources(),
-                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_0)
-                            .copy(Bitmap.Config.ARGB_8888, true);
-                    break;
-                case 1:
-                    b = BitmapFactory.decodeResource(getResources(),
-                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_1)
-                            .copy(Bitmap.Config.ARGB_8888, true);
-                    break;
-                case 2:
-                    b = BitmapFactory.decodeResource(getResources(),
-                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_2)
-                            .copy(Bitmap.Config.ARGB_8888, true);
-                    break;
-                case 3:
-                    b = BitmapFactory.decodeResource(getResources(),
-                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_3)
-                            .copy(Bitmap.Config.ARGB_8888, true);
-                    break;
-                case 4:
-                    b = BitmapFactory.decodeResource(getResources(),
-                            R.mipmap.fhooe_hagenberg_campus_raumplan_fh2_ebene_4)
-                            .copy(Bitmap.Config.ARGB_8888, true);
-                    break;
-                default:
-                    Log.e(MainActivity.TAG, "Unrecognized Floor");
-                    break;
-            }
-        }
-        return b;
-        // return Bitmap.createScaledBitmap(b ,1,1, false);
+        int id = getContext().getResources().getIdentifier(
+                "fhooe_hagenberg_campus_raumplan_fh" + _r.getBuilding() + "_ebene_" + _r.getFloor(),
+                "mipmap", getContext().getPackageName());
+        return BitmapFactory.decodeResource(getResources(), id)
+                .copy(Bitmap.Config.ARGB_8888, true);
+    }
+
+    private Bitmap getFloorPlanBitmap(int _building, int _floor) {
+        Log.i(MainActivity.TAG, "" + building + " " + floor);
+        int id = getContext().getResources().getIdentifier(
+                "fhooe_hagenberg_campus_raumplan_fh" + _building + "_ebene_" + _floor,
+                "mipmap", getContext().getPackageName());
+        return BitmapFactory.decodeResource(getResources(), id)
+                .copy(Bitmap.Config.ARGB_8888, true);
     }
 
     public static FloorPlanFragment newInstance(Parcelable _p) {
         FloorPlanFragment fragment = new FloorPlanFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(FLOOR_FRAGMENT, _p);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    public static FloorPlanFragment newInstance(int _building, int _floor) {
+        FloorPlanFragment fragment = new FloorPlanFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(MainActivity.BUILDING_INTENT, _building);
+        bundle.putInt(MainActivity.FLOOR_INTENT, _floor);
+
         fragment.setArguments(bundle);
         return fragment;
     }

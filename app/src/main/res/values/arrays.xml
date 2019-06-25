@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="buildings">
+        <item>FH1</item>
+        <item>FH2</item>
+        <item>FH3</item>
+    </string-array>
+
+    <string-array name="floors_fh1">
+        <item>Floor 0</item>
+        <item>Floor 1</item>
+        <item>Floor 2</item>
+    </string-array>
+
+    <string-array name="floors_fh2">
+        <item>Floor 0</item>
+        <item>Floor 1</item>
+        <item>Floor 2</item>
+        <item>Floor 3</item>
+        <item>Floor 4</item>
+    </string-array>
+
+    <string-array name="floors_fh3">
+        <item>Floor 0</item>
+        <item>Floor 1</item>
+        <item>Floor 2</item>
+        <item>Floor 3</item>
+        <item>Floor 4</item>
+        <item>Floor 5</item>
+    </string-array>
+</resources>
