@@ -10,7 +10,6 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ public class FloorPlanFragment extends Fragment {
     private static final String FLOOR_FRAGMENT = "FloorFragmentParcelable";
     private Bitmap image;
     private Room room;
-    private int building, floor;
 
     public FloorPlanFragment() {
     }
@@ -36,12 +34,15 @@ public class FloorPlanFragment extends Fragment {
         super.onViewCreated(_view, _savedInstanceState);
 
         room = getArguments().getParcelable(FLOOR_FRAGMENT);
-        building = getArguments().getInt(MainActivity.BUILDING_INTENT);
-        floor = getArguments().getInt(MainActivity.FLOOR_INTENT);
+        int building = getArguments().getInt(MainActivity.BUILDING_INTENT);
+        int floor = getArguments().getInt(MainActivity.FLOOR_INTENT);
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
         if (room != null) {
             Bitmap floorPlan = getFloorPlanBitmap(room);
+            // TODO delete log
+            //Log.i(MainActivity.TAG, floorPlan.getWidth() + " x "+ floorPlan.getHeight());
+            //Log.i(MainActivity.TAG, getResources().getDisplayMetrics().widthPixels + " x "+ getResources().getDisplayMetrics().heightPixels);
             float scale = getResources().getDisplayMetrics().density / 2.75f;
             float x = room.getX() * scale;
             float y = room.getY() * scale;
@@ -68,12 +69,10 @@ public class FloorPlanFragment extends Fragment {
         int id = getContext().getResources().getIdentifier(
                 "fhooe_hagenberg_campus_raumplan_fh" + _r.getBuilding() + "_ebene_" + _r.getFloor(),
                 "mipmap", getContext().getPackageName());
-        return BitmapFactory.decodeResource(getResources(), id)
-                .copy(Bitmap.Config.ARGB_8888, true);
+        return BitmapFactory.decodeResource(getResources(), id).copy(Bitmap.Config.ARGB_8888, true);
     }
 
     private Bitmap getFloorPlanBitmap(int _building, int _floor) {
-        Log.i(MainActivity.TAG, "" + building + " " + floor);
         int id = getContext().getResources().getIdentifier(
                 "fhooe_hagenberg_campus_raumplan_fh" + _building + "_ebene_" + _floor,
                 "mipmap", getContext().getPackageName());

@@ -49,6 +49,8 @@ public class FloorPlanSelectionFragment extends Fragment implements AdapterView.
             public void onClick(View v) {
                 String b = buildingSpinner.getSelectedItem().toString();
                 int building = Character.getNumericValue(b.charAt(b.length() - 1));
+                if (b.charAt(0) == 'S') // SH3 == FH 4
+                    building = 4;
                 String f = floorSpinner.getSelectedItem().toString();
                 int floor = Character.getNumericValue(f.charAt(f.length() - 1));
 
@@ -74,6 +76,10 @@ public class FloorPlanSelectionFragment extends Fragment implements AdapterView.
             }
             case "FH3": {
                 floorAdapter = ArrayAdapter.createFromResource(getContext(), R.array.floors_fh3, android.R.layout.simple_spinner_item);
+                break;
+            }
+            case "SH3": {
+                floorAdapter = ArrayAdapter.createFromResource(getContext(), R.array.floors_sh3, android.R.layout.simple_spinner_item);
                 break;
             }
         }

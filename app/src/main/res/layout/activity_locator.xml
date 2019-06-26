@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/locator_toolbar"
         android:orientation="vertical"
         android:paddingHorizontal="12dp">
@@ -31,31 +31,43 @@
             android:id="@+id/activity_locator_room_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/room_number_default"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="95dp"
             tools:layout_editor_absoluteY="88dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/activity_locator_room_building"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="18dp" />
+            android:layout_gravity="center"
+            android:paddingTop="22dp"
+            android:text="@string/building"
+            android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
+            android:id="@+id/activity_locator_button_maps"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_map"
+            android:layout_gravity="center"
+            android:drawableEnd="@drawable/ic_map"
             android:text="open in maps" />
 
         <TextView
             android:id="@+id/activity_locator_room_floor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="18dp" />
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="22dp"
+            android:text="@string/floor"
+            android:textSize="24sp" />
 
         <FrameLayout
             android:id="@+id/activity_locator_fragment_frame"

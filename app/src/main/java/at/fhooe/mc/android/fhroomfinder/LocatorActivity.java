@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ShareActionProvider;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
@@ -55,6 +55,31 @@ public class LocatorActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button b = findViewById(R.id.activity_locator_button_maps);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri gmmIntentUri = null;
+                switch (r.getBuilding()) {
+                    case 1:
+                        gmmIntentUri = Uri.parse("geo:0,0?q=48.368391,14.514426(FH1)");
+                        break;
+                    case 2:
+                        gmmIntentUri = Uri.parse("geo:0,0?q=48.368331,14.513175(FH2)");
+                        break;
+                    case 3:
+                        gmmIntentUri = Uri.parse("geo:0,0?q=48.368248,14.512413(FH3)");
+                        break;
+                }
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+
+            }
+        });
     }
 
     private void fillTextViews(Room r) {
@@ -73,8 +98,6 @@ public class LocatorActivity extends AppCompatActivity {
         tv = findViewById(R.id.activity_locator_room_name);
         tv.setText(r.getName());
     }
-
-    private ShareActionProvider shareActionProvider;
 
     @Override
     public boolean onCreateOptionsMenu(Menu _menu) {
@@ -115,7 +138,8 @@ public class LocatorActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, String.format(getResources().getString(R.string.share_text), fragment.getRoom().getName()));
+            shareIntent.putExtra(Intent.EXTRA_TEXT, String.format(getResources().getString(R.string.share_text),
+                    fragment.getRoom().getName(), fragment.getRoom().getToken()));
             startActivity(Intent.createChooser(shareIntent, getString(R.string.choose_app)));
         }
     }

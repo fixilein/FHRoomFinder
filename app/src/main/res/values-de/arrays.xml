@@ -4,6 +4,7 @@
         <item>FH1</item>
         <item>FH2</item>
         <item>FH3</item>
+        <item>SH3</item>
     </string-array>
 
     <string-array name="floors_fh1">
@@ -27,5 +28,9 @@
         <item>Ebene 3</item>
         <item>Ebene 4</item>
         <item>Ebene 5</item>
+    </string-array>
+
+    <string-array name="floors_sh3">
+        <item>Ebene 0 - 2</item>
     </string-array>
 </resources>
