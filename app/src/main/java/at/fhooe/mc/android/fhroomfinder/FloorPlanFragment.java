@@ -40,9 +40,6 @@ public class FloorPlanFragment extends Fragment {
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
         if (room != null) {
             Bitmap floorPlan = getFloorPlanBitmap(room);
-            // TODO delete log
-            //Log.i(MainActivity.TAG, floorPlan.getWidth() + " x "+ floorPlan.getHeight());
-            //Log.i(MainActivity.TAG, getResources().getDisplayMetrics().widthPixels + " x "+ getResources().getDisplayMetrics().heightPixels);
             float scale = getResources().getDisplayMetrics().density / 2.75f;
             float x = room.getX() * scale;
             float y = room.getY() * scale;

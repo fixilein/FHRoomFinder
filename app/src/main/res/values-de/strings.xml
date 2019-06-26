@@ -15,4 +15,5 @@
     <string name="about_text">Diese App wurde von Felix Tröbinger entwickelt.\n\nDiese App ist nicht der Fachhochschule Oberösterreich, Campus Hagenberg angehörig.</string>
     <string name="select_floor_plan_to_view">Ebenenplan auswählen</string>
     <string name="go">Anzeigen</string>
+    <string name="open_maps">In Google Maps öffnen</string>
 </resources>

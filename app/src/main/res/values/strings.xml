@@ -9,7 +9,6 @@
     <string name="floor">Floor</string>
     <string name="building">FH Building</string>
     <string name="locator">Locator</string>
-
     <string name="title_activity_fullscreen_floor_plan" translatable="false">FullscreenFloorPlanActivity</string>
     <string name="floor_plan">Floor Plan</string>
     <string name="choose_app">Choose an app</string>
@@ -17,5 +16,6 @@
     <string name="about_text">This app was developed by Felix Tröbinger.\n\nThis app is not affiliated with University of Applied Sciences Upper Austria, Campus Hagenberg.</string>
     <string name="select_floor_plan_to_view">Select floor plan</string>
     <string name="go">Go</string>
+    <string name="open_maps">Open in Google Maps</string>
 
 </resources>

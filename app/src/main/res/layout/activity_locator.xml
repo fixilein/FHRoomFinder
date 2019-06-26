@@ -7,6 +7,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/locator_toolbar"
+        android:theme="@style/MyToolbarStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -57,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:drawableEnd="@drawable/ic_map"
-            android:text="open in maps" />
+            android:text="@string/open_maps" />
 
         <TextView
             android:id="@+id/activity_locator_room_floor"
