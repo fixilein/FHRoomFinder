@@ -25,13 +25,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String TAG = "FH_Room_Finder";
-    static final String ROOM_INTENT = "RoomIntent";
-    public static final String FLOOR_INTENT = "Floor_section_toLocator";
-    public static final String BUILDING_INTENT = "building_section_toLocator";
-    private RoomAdapter adapter;
-    SearchView searchView;
-    List<Room> list;
+    private RoomAdapter mAdapter;
+    SearchView mSearchView;
+    List<Room> mList;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -64,20 +60,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fillRoomList() {
-        list = new LinkedList<>();
+        mList = new LinkedList<>();
         parseXml();
 
-        adapter = new RoomAdapter(this, list);
-        adapter.addAll(list);
+        mAdapter = new RoomAdapter(this, mList);
+        mAdapter.addAll(mList);
         ListView listView = findViewById(R.id.activity_main_list_view);
-        listView.setAdapter(adapter);
+        listView.setAdapter(mAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int _pos, long id) {
-                Room room = adapter.getItem(_pos);
+                Room room = mAdapter.getItem(_pos);
                 Intent i = new Intent(MainActivity.this, LocatorActivity.class);
-                i.putExtra(ROOM_INTENT, room);
+                i.putExtra(getString(R.string.intent_room), room);
                 startActivity(i);
             }
         });
@@ -108,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if ("room".equals(eltName)) {
                     currentRoom = new Room();
-                    list.add(currentRoom);
+                    mList.add(currentRoom);
                 } else if (currentRoom != null) {
                     if ("name".equals(eltName)) {
                         currentRoom.setName(_parser.nextText());
@@ -134,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.activity_main_menu, _menu);
 
         MenuItem menuItemSearch = _menu.findItem(R.id.activity_main_menu_search);
-        searchView = (SearchView) menuItemSearch.getActionView();
-        searchView.setQueryHint(getString(R.string.room_name_or_number));
+        mSearchView = (SearchView) menuItemSearch.getActionView();
+        mSearchView.setQueryHint(getString(R.string.room_name_or_number));
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -145,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String _s) {
-                adapter.filter(_s);
+                mAdapter.filter(_s);
                 if (_s.equals("")) enableSelectionFragment(true);
                 else enableSelectionFragment(false);
                 return true;

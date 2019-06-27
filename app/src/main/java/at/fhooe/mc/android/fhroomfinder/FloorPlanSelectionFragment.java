@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 public class FloorPlanSelectionFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-    Spinner floorSpinner;
+    Spinner mFloorSpinner;
 
     public FloorPlanSelectionFragment() {
     }
@@ -29,7 +29,7 @@ public class FloorPlanSelectionFragment extends Fragment implements AdapterView.
         super.onViewCreated(_view, savedInstanceState);
 
         final Spinner buildingSpinner = _view.findViewById(R.id.fragment_floor_plan_selection_spinner_building);
-        floorSpinner = _view.findViewById(R.id.fragment_floor_plan_selection_spinner_floor);
+        mFloorSpinner = _view.findViewById(R.id.fragment_floor_plan_selection_spinner_floor);
 
         ArrayAdapter<CharSequence> buildingAdapter = ArrayAdapter.createFromResource(getContext(), R.array.buildings, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> floorAdapter = ArrayAdapter.createFromResource(getContext(), R.array.floors_fh1, android.R.layout.simple_spinner_item);
@@ -38,10 +38,10 @@ public class FloorPlanSelectionFragment extends Fragment implements AdapterView.
         buildingSpinner.setAdapter(buildingAdapter);
 
         floorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        floorSpinner.setAdapter(floorAdapter);
+        mFloorSpinner.setAdapter(floorAdapter);
 
         buildingSpinner.setOnItemSelectedListener(this);
-        floorSpinner.setOnItemSelectedListener(this);
+        mFloorSpinner.setOnItemSelectedListener(this);
 
         Button goBtn = _view.findViewById(R.id.fragment_floor_plan_selection_button_submit);
         goBtn.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +51,12 @@ public class FloorPlanSelectionFragment extends Fragment implements AdapterView.
                 int building = Character.getNumericValue(b.charAt(b.length() - 1));
                 if (b.charAt(0) == 'S') // SH3 == FH 4
                     building = 4;
-                String f = floorSpinner.getSelectedItem().toString();
+                String f = mFloorSpinner.getSelectedItem().toString();
                 int floor = Character.getNumericValue(f.charAt(f.length() - 1));
 
                 Intent i = new Intent(getContext(), FullscreenFloorPlanActivity.class);
-                i.putExtra(MainActivity.BUILDING_INTENT, building);
-                i.putExtra(MainActivity.FLOOR_INTENT, floor);
+                i.putExtra(getString(R.string.intent_building), building);
+                i.putExtra(getString(R.string.intent_floor), floor);
                 startActivity(i);
             }
         });
@@ -84,7 +84,7 @@ public class FloorPlanSelectionFragment extends Fragment implements AdapterView.
             }
         }
         if (floorAdapter != null) {
-            floorSpinner.setAdapter(floorAdapter);
+            mFloorSpinner.setAdapter(floorAdapter);
             floorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         }
     }

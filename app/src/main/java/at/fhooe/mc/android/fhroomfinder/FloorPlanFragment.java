@@ -1,5 +1,6 @@
 package at.fhooe.mc.android.fhroomfinder;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -16,10 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 public class FloorPlanFragment extends Fragment {
-
-    private static final String FLOOR_FRAGMENT = "FloorFragmentParcelable";
-    private Bitmap image;
-    private Room room;
+    private Bitmap mImage;
+    private Room mRoom;
 
     public FloorPlanFragment() {
     }
@@ -33,23 +32,23 @@ public class FloorPlanFragment extends Fragment {
     public void onViewCreated(@NonNull View _view, @Nullable Bundle _savedInstanceState) {
         super.onViewCreated(_view, _savedInstanceState);
 
-        room = getArguments().getParcelable(FLOOR_FRAGMENT);
-        int building = getArguments().getInt(MainActivity.BUILDING_INTENT);
-        int floor = getArguments().getInt(MainActivity.FLOOR_INTENT);
+        mRoom = getArguments().getParcelable(getString(R.string.floor_fragment_parcelable));
+        int building = getArguments().getInt(getString(R.string.intent_building));
+        int floor = getArguments().getInt(getString(R.string.intent_floor));
 
         ImageView iv = _view.findViewById(R.id.fragment_floor_plan_image_view);
-        if (room != null) {
-            Bitmap floorPlan = getFloorPlanBitmap(room);
+        if (mRoom != null) {
+            Bitmap floorPlan = getFloorPlanBitmap(mRoom);
             float scale = getResources().getDisplayMetrics().density / 2.75f;
-            float x = room.getX() * scale;
-            float y = room.getY() * scale;
+            float x = mRoom.getX() * scale;
+            float y = mRoom.getY() * scale;
             drawCircle(floorPlan, x, y);
             iv.setImageBitmap(floorPlan);
-            image = floorPlan;
+            mImage = floorPlan;
         } else {
             Bitmap floorPlan = getFloorPlanBitmap(building, floor);
             iv.setImageBitmap(floorPlan);
-            image = floorPlan;
+            mImage = floorPlan;
         }
     }
 
@@ -77,30 +76,30 @@ public class FloorPlanFragment extends Fragment {
                 .copy(Bitmap.Config.ARGB_8888, true);
     }
 
-    public static FloorPlanFragment newInstance(Parcelable _p) {
+    public static FloorPlanFragment newInstance(Context _c, Parcelable _p) {
         FloorPlanFragment fragment = new FloorPlanFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(FLOOR_FRAGMENT, _p);
+        bundle.putParcelable(_c.getString(R.string.floor_fragment_parcelable), _p);
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    public static FloorPlanFragment newInstance(int _building, int _floor) {
+    public static FloorPlanFragment newInstance(Context _c, int _building, int _floor) {
         FloorPlanFragment fragment = new FloorPlanFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(MainActivity.BUILDING_INTENT, _building);
-        bundle.putInt(MainActivity.FLOOR_INTENT, _floor);
+        bundle.putInt(_c.getString(R.string.intent_building), _building);
+        bundle.putInt(_c.getString(R.string.intent_floor), _floor);
 
         fragment.setArguments(bundle);
         return fragment;
     }
 
     public Bitmap getImage() {
-        return image;
+        return mImage;
     }
 
     public Room getRoom() {
-        return room;
+        return mRoom;
     }
 
 }

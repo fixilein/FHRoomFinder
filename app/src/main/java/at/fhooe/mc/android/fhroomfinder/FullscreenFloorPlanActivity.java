@@ -115,16 +115,16 @@ public class FullscreenFloorPlanActivity extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-        Room room = getIntent().getParcelableExtra(LocatorActivity.ROOM_FULLSCREEN);
-        int building = getIntent().getIntExtra(MainActivity.BUILDING_INTENT, -1);
-        int floor = getIntent().getIntExtra(MainActivity.FLOOR_INTENT, -1);
+        Room room = getIntent().getParcelableExtra(getString(R.string.room_fullscreen));
+        int building = getIntent().getIntExtra(getString(R.string.intent_building), -1);
+        int floor = getIntent().getIntExtra(getString(R.string.intent_floor), -1);
 
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
         if (room != null)
-            t.replace(R.id.activity_fullscreen_floor_plan_frame, FloorPlanFragment.newInstance(room));
+            t.replace(R.id.activity_fullscreen_floor_plan_frame, FloorPlanFragment.newInstance(getApplicationContext(), room));
         else
-            t.replace(R.id.activity_fullscreen_floor_plan_frame, FloorPlanFragment.newInstance(building, floor));
+            t.replace(R.id.activity_fullscreen_floor_plan_frame, FloorPlanFragment.newInstance(getApplicationContext(), building, floor));
         t.commit();
 
     }

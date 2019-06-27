@@ -21,16 +21,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class LocatorActivity extends AppCompatActivity {
-
-    static final String ROOM_FULLSCREEN = "FullscreenRoomToShow";
-    FloorPlanFragment fragment;
+    FloorPlanFragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locator);
 
-        final Room r = getIntent().getParcelableExtra(MainActivity.ROOM_INTENT);
+        final Room r = getIntent().getParcelableExtra(getString(R.string.intent_room));
 
         Toolbar tb = findViewById(R.id.locator_toolbar);
         tb.setTitle(r.getName());
@@ -42,8 +40,8 @@ public class LocatorActivity extends AppCompatActivity {
 
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
-        fragment = FloorPlanFragment.newInstance(r);
-        t.replace(R.id.activity_locator_fragment_frame, fragment);
+        mFragment = FloorPlanFragment.newInstance(getApplicationContext(), r);
+        t.replace(R.id.activity_locator_fragment_frame, mFragment);
         t.commit();
 
         View frame = findViewById(R.id.activity_locator_fragment_frame);
@@ -51,7 +49,7 @@ public class LocatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(LocatorActivity.this, FullscreenFloorPlanActivity.class);
-                i.putExtra(ROOM_FULLSCREEN, r);
+                i.putExtra(getString(R.string.room_fullscreen), r);
                 startActivity(i);
             }
         });
@@ -121,7 +119,7 @@ public class LocatorActivity extends AppCompatActivity {
             File cachePath = new File(context.getCacheDir(), "images");
             cachePath.mkdirs();
             FileOutputStream stream = new FileOutputStream(cachePath + "/image.png"); // overwrites this image every time
-            fragment.getImage().compress(Bitmap.CompressFormat.PNG, 100, stream);
+            mFragment.getImage().compress(Bitmap.CompressFormat.PNG, 100, stream);
             stream.close();
 
         } catch (IOException e) {
@@ -139,7 +137,7 @@ public class LocatorActivity extends AppCompatActivity {
             shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
             shareIntent.putExtra(Intent.EXTRA_TEXT, String.format(getResources().getString(R.string.share_text),
-                    fragment.getRoom().getName(), fragment.getRoom().getToken()));
+                    mFragment.getRoom().getName(), mFragment.getRoom().getToken()));
             startActivity(Intent.createChooser(shareIntent, getString(R.string.choose_app)));
         }
     }

@@ -12,11 +12,11 @@ import java.util.Locale;
 
 public class RoomAdapter extends ArrayAdapter<Room> {
 
-    List<Room> list;
+    List<Room> mList;
 
     public RoomAdapter(Context _c, List<Room> _list) {
         super(_c, -1);
-        list = _list;
+        mList = _list;
     }
 
     @Override
@@ -44,9 +44,9 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         clear();
 
         if (_s.length() == 0) {
-            addAll(list);
+            addAll(mList);
         } else {
-            for (Room room : list) {
+            for (Room room : mList) {
                 String name = room.getName().toLowerCase(Locale.getDefault()).replace(".", "");
                 String num = room.getToken().toLowerCase(Locale.getDefault());
                 String num2 = num.replace(".", "");
