@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String FLOOR_INTENT = "Floor_section_toLocator";
     public static final String BUILDING_INTENT = "building_section_toLocator";
     private RoomAdapter adapter;
-    private ListView listView;
     SearchView searchView;
     List<Room> list;
 
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new RoomAdapter(this, list);
         adapter.addAll(list);
-        listView = findViewById(R.id.activity_main_list_view);
+        ListView listView = findViewById(R.id.activity_main_list_view);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
