@@ -36,6 +36,8 @@
             android:textSize="18sp"
             tools:layout_editor_absoluteX="59dp"
             tools:layout_editor_absoluteY="28dp" />
+
+        <!-- TODO add biweekly licence-->
     </LinearLayout>
 
 

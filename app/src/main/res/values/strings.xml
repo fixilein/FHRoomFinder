@@ -9,7 +9,6 @@
     <string name="floor">Floor</string>
     <string name="building">FH Building</string>
     <string name="locator">Locator</string>
-    <string name="title_activity_fullscreen_floor_plan" translatable="false">FullscreenFloorPlanActivity</string>
     <string name="floor_plan">Floor Plan</string>
     <string name="choose_app">Choose an app</string>
     <string name="share_text">Here is the location of %s (%s).</string>
@@ -19,11 +18,14 @@
     <string name="open_maps">Open in Google Maps</string>
 
 
+    <!-- Global vars, keys and tags -->
+    <string name="title_activity_fullscreen_floor_plan" translatable="false">FullscreenFloorPlanActivity</string>
     <string name="intent_room" translatable="false">RoomIntent</string>
     <string name="intent_floor" translatable="false">FloorIntent</string>
     <string name="intent_building" translatable="false">BuildingIntent</string>
     <string name="tag" translatable="false">FH_ROOM_FINDER</string>
     <string name="floor_fragment_parcelable" translatable="false">FloorFragmentParcelable</string>
     <string name="room_fullscreen" translatable="false">FullscreenRoomToShow</string>
+    <string name="timetable">Timetable</string>
 
 </resources>

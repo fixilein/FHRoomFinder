@@ -16,4 +16,5 @@
     <string name="select_floor_plan_to_view">Ebenenplan auswählen</string>
     <string name="go">Anzeigen</string>
     <string name="open_maps">In Google Maps öffnen</string>
+    <string name="timetable">Stundenplan</string>
 </resources>

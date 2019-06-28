@@ -2,7 +2,6 @@ package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     private RoomAdapter mAdapter;
     SearchView mSearchView;
-    List<Room> mList;
+    public List<Room> mList;
+    TimetableFragment mTimetableFragment;
+    FloorPlanSelectionFragment mFloorPlanSelectionFragment;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -40,21 +41,30 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(tb);
 
         fillRoomList();
-        enableSelectionFragment(true);
+
+        mFloorPlanSelectionFragment = new FloorPlanSelectionFragment();
+        mTimetableFragment = new TimetableFragment();
+        mTimetableFragment.setList(mList);
+        enableFragments(true);
     }
 
-    private void enableSelectionFragment(boolean _select) {
+    private void enableFragments(boolean _select) {
+        // TODO if shared prefs ical is set
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
         View sep = findViewById(R.id.activity_main_separator);
+        View sep2 = findViewById(R.id.activity_main_separator2);
         if (_select) {
-            t.replace(R.id.activity_main_selection_frame, new FloorPlanSelectionFragment());
+            t.replace(R.id.activity_main_selection_frame, mFloorPlanSelectionFragment);
             sep.setVisibility(View.VISIBLE);
+            sep2.setVisibility(View.VISIBLE);
+
+            t.replace(R.id.activity_main_timetable_frame, mTimetableFragment);
         } else {
-            Fragment fragmentById = getSupportFragmentManager().findFragmentById(R.id.activity_main_selection_frame);
-            if (fragmentById != null)
-                t.remove(fragmentById);
+            t.remove(mFloorPlanSelectionFragment);
+            t.remove(mTimetableFragment);
             sep.setVisibility(View.GONE);
+            sep2.setVisibility(View.GONE);
         }
         t.commit();
     }
@@ -142,8 +152,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String _s) {
                 mAdapter.filter(_s);
-                if (_s.equals("")) enableSelectionFragment(true);
-                else enableSelectionFragment(false);
+                if (_s.equals("")) enableFragments(true);
+                else enableFragments(false);
                 return true;
             }
         });

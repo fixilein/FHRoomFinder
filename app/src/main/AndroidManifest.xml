@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="at.fhooe.mc.android.fhroomfinder">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- TODO remove-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,10 +17,10 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".FullscreenFloorPlanActivity"
-            android:screenOrientation="sensor"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen_floor_plan"
             android:parentActivityName=".LocatorActivity"
+            android:screenOrientation="sensor"
             android:theme="@style/FullscreenTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -39,8 +43,8 @@
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="at.fhooe.mc.android.fhroomfinder.fileprovider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
