@@ -17,4 +17,12 @@
     <string name="go">Anzeigen</string>
     <string name="open_maps">In Google Maps öffnen</string>
     <string name="timetable">Stundenplan</string>
+    <string name="settings">Einstellungen</string>
+    <string name="processing">arbeitet...</string>
+    <string name="invalid_url_error">Ungültige URL! Bitte überprüfe die URL in den Einstllungen und versuche es erneut!</string>
+    <string name="appointment_find_button">%s finden</string>
+    <string name="appointment_location">In: %s (%s)</string>
+    <string name="appointment_next">Nächster Termin: %s</string>
+    <string name="appointment_now">Jetzt: %s</string>
+    <string name="error_cannot_find_room">Dieser Raum kann leider nicht gefunden werden. :(</string>
 </resources>

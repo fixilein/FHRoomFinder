@@ -1,6 +1,7 @@
 package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -49,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void enableFragments(boolean _select) {
-        // TODO if shared prefs ical is set
+        SharedPreferences sp = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE);
+        String url = sp.getString(getString(R.string.shared_prefs_ical_link), "undefined");
+        boolean enableTimeTable = !url.equals("undefined") && !url.equals("");
+
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
         View sep = findViewById(R.id.activity_main_separator);
@@ -57,9 +61,11 @@ public class MainActivity extends AppCompatActivity {
         if (_select) {
             t.replace(R.id.activity_main_selection_frame, mFloorPlanSelectionFragment);
             sep.setVisibility(View.VISIBLE);
-            sep2.setVisibility(View.VISIBLE);
 
-            t.replace(R.id.activity_main_timetable_frame, mTimetableFragment);
+            if (enableTimeTable) {
+                t.replace(R.id.activity_main_timetable_frame, mTimetableFragment);
+                sep2.setVisibility(View.VISIBLE);
+            }
         } else {
             t.remove(mFloorPlanSelectionFragment);
             t.remove(mTimetableFragment);
@@ -162,9 +168,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem _item) {
-        if (_item.getItemId() == R.id.activity_main_menu_about) {
-            Intent i = new Intent(MainActivity.this, AboutActivity.class);
-            startActivity(i);
+        switch (_item.getItemId()) {
+            case R.id.activity_main_menu_about:
+                Intent i = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(i);
+                break;
+            case R.id.activity_main_menu_settings:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                break;
         }
         return true;
     }

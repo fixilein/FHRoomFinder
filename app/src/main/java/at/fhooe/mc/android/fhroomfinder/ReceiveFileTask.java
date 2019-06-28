@@ -24,6 +24,9 @@ public class ReceiveFileTask extends AsyncTask<String, Void, Void> {
 
     @Override
     protected Void doInBackground(String... _url) {
+        File f = new File(mContext.getFilesDir(), "ical.ics");
+        f.delete();
+
         int count;
         try {
             URL url = new URL(_url[0]);
@@ -51,10 +54,14 @@ public class ReceiveFileTask extends AsyncTask<String, Void, Void> {
             input.close();
 
             Log.i("FHRoomFinder", "file downloaded!"); // TODO remove
+            ttFragment.setInvalidURL(false);
             ttFragment.readCal();
 
         } catch (Exception e) {
             Log.e("FHRoomFinder", e.getMessage());
+            if (e.getMessage().contains("no protocol")) {
+                ttFragment.setInvalidURL(true);
+            }
         }
         return null;
     }

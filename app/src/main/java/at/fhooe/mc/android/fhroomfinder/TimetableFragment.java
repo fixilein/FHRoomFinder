@@ -1,11 +1,11 @@
 package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +22,14 @@ import biweekly.ICalendar;
 import biweekly.component.VEvent;
 import biweekly.io.text.ICalReader;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class TimetableFragment extends Fragment implements View.OnClickListener {
 
     View mView;
-    String mURL = "http://stundenplan.fh-ooe.at/ics/80f59376211744c879.ics";
+    String mURL;
+
+    boolean mInvalidURL;
 
     VEvent mEvent;
     boolean mOnGoing;
@@ -39,6 +43,10 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         mList = _l;
     }
 
+    public void setInvalidURL(boolean _b) {
+        mInvalidURL = _b;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_timetable, container, false);
@@ -48,6 +56,9 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
     public void onViewCreated(@NonNull View _view, @Nullable Bundle _savedInstanceState) {
         super.onViewCreated(_view, _savedInstanceState);
         mView = _view;
+
+        SharedPreferences sp = getContext().getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE);
+        mURL = sp.getString(getString(R.string.shared_prefs_ical_link), "undefined");
 
         Button b = mView.findViewById(R.id.fragment_timetable_button_find);
         Button bRefresh = mView.findViewById(R.id.fragment_timetable_button_update);
@@ -71,11 +82,10 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         Button bRefresh = mView.findViewById(R.id.fragment_timetable_button_update);
 
         if (mEvent != null) {
-            //ll.setVisibility(View.VISIBLE);
             if (mOnGoing)
-                tvAppointment.setText(String.format("Now: %s", mEvent.getSummary().getValue()));
+                tvAppointment.setText(String.format(getString(R.string.appointment_now), mEvent.getSummary().getValue()));
             else
-                tvAppointment.setText(String.format("Next up: %s", mEvent.getSummary().getValue()));
+                tvAppointment.setText(String.format(getString(R.string.appointment_next), mEvent.getSummary().getValue()));
 
             String tok = stringToTok(mEvent.getLocation().getValue());
             for (Room r : mList) {
@@ -85,19 +95,21 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                 }
             }
 
-            tvRoom.setText(String.format("In: %s (%s)", mRoom.getName(), mRoom.getToken()));
-            bLocate.setText(String.format("Find %s", mRoom.getName()));
+            tvRoom.setText(String.format(getString(R.string.appointment_location), mRoom.getName(), mRoom.getToken()));
+            bLocate.setText(String.format(getString(R.string.appointment_find_button), mRoom.getName()));
             bLocate.setEnabled(true);
             bRefresh.setEnabled(true);
 
 
         } else {
-            //ll.setVisibility(View.GONE);
-            tvAppointment.setText("processing ... ");
+            tvAppointment.setText(getResources().getString(R.string.processing));
             tvRoom.setText("");
             bLocate.setText("...");
             bLocate.setEnabled(false);
             bRefresh.setEnabled(false);
+        }
+        if (mInvalidURL) {
+            tvAppointment.setText(getResources().getString(R.string.invalid_url_error));
         }
     }
 
@@ -144,12 +156,10 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         if (closestEvent != null) {
             mEvent = closestEvent;
             mOnGoing = false;
-            Log.i("FHRoomFinder", "\n\n\nNext Event:  " + closestEvent.getDateStart().getValue() + "   " + closestEvent.getSummary().getValue() + "   " + closestEvent.getLocation().getValue());
         }
         if (currentEvent != null) {
             mEvent = currentEvent;
             mOnGoing = true;
-            Log.i("FHRoomFinder", "\n\n\nCurrent Event:  " + currentEvent.getDateStart().getValue() + "   " + currentEvent.getSummary().getValue() + "   " + currentEvent.getLocation().getValue());
         }
     }
 
@@ -162,7 +172,7 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                     i.putExtra(getString(R.string.intent_room), mRoom);
                     startActivity(i);
                 } else {
-                    Toast.makeText(getContext(), "Sorry, cannot find this room. :(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_cannot_find_room), Toast.LENGTH_SHORT).show();
                 }
                 break;
 
@@ -173,4 +183,5 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                 break;
         }
     }
+
 }
