@@ -110,7 +110,16 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         }
         if (mInvalidURL) {
             tvAppointment.setText(getResources().getString(R.string.invalid_url_error));
+            tvRoom.setText("");
+            bLocate.setVisibility(View.GONE);
         }
+
+        if (mURL.equals("")) {
+            tvAppointment.setText(getString(R.string.timetable_reminder));
+            tvRoom.setText("");
+            bLocate.setVisibility(View.GONE);
+        }
+
     }
 
     private String stringToTok(String _s) {

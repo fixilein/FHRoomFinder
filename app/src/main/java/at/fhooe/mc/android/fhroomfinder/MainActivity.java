@@ -1,7 +1,6 @@
 package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -50,22 +49,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void enableFragments(boolean _select) {
-        SharedPreferences sp = getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE);
-        String url = sp.getString(getString(R.string.shared_prefs_ical_link), "undefined");
-        boolean enableTimeTable = !url.equals("undefined") && !url.equals("");
-
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
         View sep = findViewById(R.id.activity_main_separator);
         View sep2 = findViewById(R.id.activity_main_separator2);
         if (_select) {
             t.replace(R.id.activity_main_selection_frame, mFloorPlanSelectionFragment);
-            sep.setVisibility(View.VISIBLE);
+            t.replace(R.id.activity_main_timetable_frame, mTimetableFragment);
 
-            if (enableTimeTable) {
-                t.replace(R.id.activity_main_timetable_frame, mTimetableFragment);
-                sep2.setVisibility(View.VISIBLE);
-            }
+            sep.setVisibility(View.VISIBLE);
+            sep2.setVisibility(View.VISIBLE);
+
         } else {
             t.remove(mFloorPlanSelectionFragment);
             t.remove(mTimetableFragment);

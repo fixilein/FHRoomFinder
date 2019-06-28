@@ -39,5 +39,6 @@
     <string name="appointment_location">In: %s (%s)</string>
     <string name="appointment_find_button">Find %s</string>
     <string name="error_cannot_find_room">Sorry, cannot find this room. :(</string>
+    <string name="timetable_reminder">To enable timetable integration, press the three dots and Settings.</string>
 
 </resources>

@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:paddingVertical="6dp"
+            android:paddingTop="20dp"
             android:text="@string/rooms"
             android:textSize="24sp"
             android:textStyle="bold" />
