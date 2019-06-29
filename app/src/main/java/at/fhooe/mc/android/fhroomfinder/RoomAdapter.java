@@ -10,6 +10,9 @@ import android.widget.TextView;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Adapter for list view.
+ */
 public class RoomAdapter extends ArrayAdapter<Room> {
 
     List<Room> mList;
@@ -39,6 +42,11 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         return _convertView;
     }
 
+    /**
+     * Seach the room list. can search for name or token.
+     *
+     * @param _s string to search for
+     */
     public void filter(String _s) {
         _s = _s.trim().toLowerCase(Locale.getDefault()).replace(". ", ".");
         clear();

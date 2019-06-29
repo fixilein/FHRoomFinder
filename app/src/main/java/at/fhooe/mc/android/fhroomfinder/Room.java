@@ -3,6 +3,9 @@ package at.fhooe.mc.android.fhroomfinder;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * Room Data class. implements Parcelable.
+ */
 public class Room implements Parcelable {
     private int building, floor, number;
     private String name;
@@ -17,6 +20,11 @@ public class Room implements Parcelable {
         y = _y;
     }
 
+    /**
+     * Parcel constructor.
+     *
+     * @param _in parcel
+     */
     protected Room(Parcel _in) {
         building = _in.readInt();
         floor = _in.readInt();

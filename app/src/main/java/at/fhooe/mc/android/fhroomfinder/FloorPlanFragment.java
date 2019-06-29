@@ -16,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+/**
+ * Display floor plan or floor plan with marked floor.
+ */
 public class FloorPlanFragment extends Fragment {
     private Bitmap mImage;
     private Room mRoom;
@@ -52,6 +55,13 @@ public class FloorPlanFragment extends Fragment {
         }
     }
 
+    /**
+     * Draws circle on respective location on floor plan usin Canvas.
+     *
+     * @param _floorPlan Bitmap of floor plan.
+     * @param _x         x coord
+     * @param _y         y coord
+     */
     private void drawCircle(Bitmap _floorPlan, float _x, float _y) {
         Canvas canvas = new Canvas(_floorPlan);
         Paint paint = new Paint();
@@ -61,6 +71,11 @@ public class FloorPlanFragment extends Fragment {
         canvas.drawCircle(_x, _y, 150, paint);
     }
 
+    /**
+     * Get floor plan according to building and floor.
+     * @param _r Room
+     * @return Bitmap of floor plan
+     */
     private Bitmap getFloorPlanBitmap(Room _r) {
         int id = getContext().getResources().getIdentifier(
                 "fhooe_hagenberg_campus_raumplan_fh" + _r.getBuilding() + "_ebene_" + _r.getFloor(),

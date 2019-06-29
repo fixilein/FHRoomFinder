@@ -22,6 +22,9 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Main Activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private RoomAdapter mAdapter;
@@ -48,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
         enableFragments(true);
     }
 
+    /**
+     * enable or disable selection and timetable fragment
+     *
+     * @param _select true = enable, false = disable
+     */
     private void enableFragments(boolean _select) {
         FragmentManager mgr = getSupportFragmentManager();
         FragmentTransaction t = mgr.beginTransaction();
@@ -69,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         t.commit();
     }
 
+    /**
+     * fill room list with rooms from xml
+     */
     private void fillRoomList() {
         mList = new LinkedList<>();
         parseXml();
@@ -89,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * xml parser
+     */
     private void parseXml() {
         XmlPullParserFactory parserFactory;
         try {

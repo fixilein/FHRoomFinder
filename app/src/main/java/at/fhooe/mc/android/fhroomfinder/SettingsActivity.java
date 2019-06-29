@@ -1,17 +1,21 @@
 package at.fhooe.mc.android.fhroomfinder;
 
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Settings
+ */
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
@@ -49,8 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        Button bPaste = findViewById(R.id.activity_settings_button_paste);
-        bPaste.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.activity_settings_button_paste).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
@@ -58,6 +61,15 @@ public class SettingsActivity extends AppCompatActivity {
                     TextView tv = findViewById(R.id.activity_settings_edit_link);
                     tv.setText(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
                 }
+            }
+        });
+
+        findViewById(R.id.activity_settings_button_levis).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://levis.fh-ooe.at/schedule"));
+                startActivity(i);
             }
         });
     }

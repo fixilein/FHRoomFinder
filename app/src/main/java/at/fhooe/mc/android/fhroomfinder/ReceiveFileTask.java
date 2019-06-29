@@ -13,9 +13,12 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * AsyncTask for downloading the ics file
+ */
 public class ReceiveFileTask extends AsyncTask<String, Void, Void> {
 
-    private WeakReference<Context> mContext; // TODO leak?
+    private WeakReference<Context> mContext;
     private TimetableFragment ttFragment;
 
     ReceiveFileTask(Context _c, TimetableFragment _timetableFragment) {
@@ -40,7 +43,7 @@ public class ReceiveFileTask extends AsyncTask<String, Void, Void> {
                 connection.setConnectTimeout(20000);
                 connection.setReadTimeout(20000);
 
-                Log.i("FHRoomFinder", "starting to download"); // TODO remove
+                Log.i("FHRoomFinder", "starting to download");
 
                 // download the file
                 InputStream input = new BufferedInputStream(url.openStream(),
@@ -59,7 +62,7 @@ public class ReceiveFileTask extends AsyncTask<String, Void, Void> {
                 output.close();
                 input.close();
 
-                Log.i("FHRoomFinder", "file downloaded!"); // TODO remove
+                Log.i("FHRoomFinder", "file downloaded!");
                 ttFragment.setInvalidURL(false);
                 ttFragment.readCal();
 

@@ -13,32 +13,58 @@
         android:background="@color/colorPrimary"
         android:elevation="4dp" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/about_toolbar"
-        android:orientation="vertical"
-        android:paddingHorizontal="12dp">
+        android:layout_below="@id/about_toolbar">
 
-        <TextView
-            android:id="@+id/activity_about_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp">
 
-        <TextView
-            android:id="@+id/activity_about_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/about_text"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="59dp"
-            tools:layout_editor_absoluteY="28dp" />
+            <TextView
+                android:id="@+id/activity_about_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <!-- TODO add biweekly licence-->
-    </LinearLayout>
+            <TextView
+                android:id="@+id/activity_about_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_text"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="59dp"
+                tools:layout_editor_absoluteY="28dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="32dp"
+                android:text="@string/third_party_software"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/activity_about_text_biweekly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:text="@string/about_biweekly"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/activity_about_text_biweekly_licence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/biweekly_licence" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

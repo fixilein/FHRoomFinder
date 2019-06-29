@@ -15,7 +15,7 @@
     <string name="about_text">This app was developed by Felix Tröbinger.\n\nThis app is not affiliated with University of Applied Sciences Upper Austria, Campus Hagenberg.</string>
     <string name="select_floor_plan_to_view">Select floor plan</string>
     <string name="go">Go</string>
-    <string name="open_maps">Open in Google Maps</string>
+    <string name="open_maps">Open in Maps</string>
 
 
     <!-- Global vars, keys and tags -->
@@ -38,6 +38,11 @@
     <string name="appointment_location">In: %s (%s)</string>
     <string name="appointment_find_button">Find %s</string>
     <string name="error_cannot_find_room">Sorry, cannot find this room. :(</string>
-    <string name="timetable_reminder">To enable timetable integration, press the three dots and Settings.</string>
+    <string name="timetable_reminder">You can enable timetable integration in the Settings.</string>
+    <string name="settings_help">Go to LEVIS.fh-ooe.at -> Schedule -> Configuration -> iCal Settings.\nTick the "enable iCalendar sync checkbox and copy the link under "URL". It should look like this:\n"http://stundenplan.fh-ooe.at/ics/xxxxxxxxxxxxxxxxxx.ics" </string>
+    <string name="instructions">Instructions</string>
+    <string name="third_party_software" translatable="false">Third Party Software</string>
+    <string name="about_biweekly" translatable="false">This app uses the iCal Library biweekly by Michael Angstadt which is licenced under the BSD 2-Clause "Simplified" License.</string>
+    <string name="biweekly_licence" translatable="false">Copyright (c) 2013-2018, Michael Angstadt All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS ISAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</string>
 
 </resources>

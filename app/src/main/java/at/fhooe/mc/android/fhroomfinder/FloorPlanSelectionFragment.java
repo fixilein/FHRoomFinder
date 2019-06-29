@@ -13,6 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+/**
+ * Select a floor plan to view.
+ */
 public class FloorPlanSelectionFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     Spinner mFloorSpinner;
 

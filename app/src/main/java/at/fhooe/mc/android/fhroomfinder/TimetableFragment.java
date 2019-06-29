@@ -24,6 +24,9 @@ import biweekly.io.text.ICalReader;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * Timetable integration.
+ */
 public class TimetableFragment extends Fragment implements View.OnClickListener {
 
     View mView;
@@ -58,7 +61,7 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         mView = _view;
 
         SharedPreferences sp = getContext().getSharedPreferences(getString(R.string.shared_prefs), MODE_PRIVATE);
-        mURL = sp.getString(getString(R.string.shared_prefs_ical_link), "undefined");
+        mURL = sp.getString(getString(R.string.shared_prefs_ical_link), "");
 
         Button b = mView.findViewById(R.id.fragment_timetable_button_find);
         Button bRefresh = mView.findViewById(R.id.fragment_timetable_button_update);
@@ -75,6 +78,9 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         updateUI();
     }
 
+    /**
+     * update ui, if fragment is visible in activity. needs to be called on main/ui thread.
+     */
     void updateUI() {
         if (getActivity() == null)
             return;
@@ -126,6 +132,12 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
 
     }
 
+    /**
+     * convert a string like "Hagenberg bet at home hs3 (FHX.XXX)" to "FHX.XXX"
+     *
+     * @param _s in
+     * @return token
+     */
     private String stringToTok(String _s) {
         int startIndex = _s.indexOf("(FH");
         String substring = _s.substring(startIndex);
@@ -138,6 +150,10 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         return new Room(building, floor, number, name, 0, 0).getToken();
     }
 
+    /**
+     * read local is cs file and get next event.
+     * @throws IOException
+     */
     void readCal() throws IOException {
         File file = new File(getContext().getFilesDir(), "ical.ics");
 

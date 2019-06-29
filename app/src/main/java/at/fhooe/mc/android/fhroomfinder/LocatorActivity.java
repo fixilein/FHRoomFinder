@@ -20,6 +20,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * View for finding the room.
+ */
 public class LocatorActivity extends AppCompatActivity {
     FloorPlanFragment mFragment;
 
@@ -71,7 +74,6 @@ public class LocatorActivity extends AppCompatActivity {
                         break;
                 }
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mapIntent);
                 }
@@ -112,6 +114,9 @@ public class LocatorActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * launch share image intent
+     */
     private void shareImage() {
         Context context = getApplicationContext();
         // save bitmap to cache directory
