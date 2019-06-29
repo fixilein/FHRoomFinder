@@ -76,6 +76,9 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
     }
 
     void updateUI() {
+        if (getActivity() == null)
+            return;
+
         TextView tvAppointment = mView.findViewById(R.id.fragment_timetable_text_appointment);
         TextView tvRoom = mView.findViewById(R.id.fragment_timetable_text_room);
         Button bLocate = mView.findViewById(R.id.fragment_timetable_button_find);
@@ -119,6 +122,7 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
             tvRoom.setText("");
             bLocate.setVisibility(View.GONE);
         }
+
 
     }
 

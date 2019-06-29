@@ -29,10 +29,9 @@
     <string name="timetable">Timetable</string>
     <string name="processing">processing...</string>
     <string name="settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="shared_prefs" translatable="false">RoomFinderSharedPreferences</string>
     <string name="shared_prefs_ical_link" translatable="false">RoomFinderSharedPrefsICalLink</string>
+
     <string name="invalid_url_error">Invalid URL! Please check the URL in Settings and try again!</string>
     <string name="appointment_now">Now: %s</string>
     <string name="appointment_next">Next up: %s</string>

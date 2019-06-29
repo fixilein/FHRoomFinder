@@ -1,12 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><!-- TEMPLATE
- <room>
-     <name></name>
-     <tok></tok>
-     <x></x>
-     <y></y>
- </room>
- -->
+<?xml version="1.0" encoding="utf-8"?>
+
 <rooms>
+    <!--FH1 Ebene 0-->
+    <room>
+        <name>OÖN HS1</name>
+        <tok>FH1.005</tok>
+        <x>770</x>
+        <y>930</y>
+    </room>
+    <room>
+        <name>CELUM HS2</name>
+        <tok>FH1.004</tok>
+        <x>1010</x>
+        <y>930</y>
+    </room>
+
+    <!-- FH1 Ebene 1 & 2-->
+    <!--Büros-->
 
     <!--FH2 Ebene 4-->
     <room>
@@ -570,4 +580,151 @@
         <x>1300</x>
         <y>1000</y>
     </room>
+
+    <!--FH3 Ebene 0-->
+    <room>
+        <name>DeloitteLab LBS1 SE Labor 1</name>
+        <tok>FH3.008</tok>
+        <x>330</x>
+        <y>1080</y>
+    </room>
+    <room>
+        <name>LBS2 SE Labor 2</name>
+        <tok>FH3.009</tok>
+        <x>100</x>
+        <y>1080</y>
+    </room>
+
+    <!--FH3 Ebene 1-->
+    <room>
+        <name>Haustechnik Lüftungszentrale</name>
+        <tok>FH3.103</tok>
+        <x>180</x>
+        <y>600</y>
+    </room>
+    <room>
+        <name>IFE LBS4 SE Labor 4</name>
+        <tok>FH3.109</tok>
+        <x>180</x>
+        <y>1080</y>
+    </room>
+    <room>
+        <name>XORTEX LBS3 SE Labor 3</name>
+        <tok>FH3.108</tok>
+        <x>400</x>
+        <y>1080</y>
+    </room>
+
+    <!-- FH3 Ebene 2-->
+    <room>
+        <name>3 Banken IT SRS1 SE Seminarraum 1</name>
+        <tok>FH3.216</tok>
+        <x>340</x>
+        <y>1230</y>
+    </room>
+    <room>
+        <name>Archiv/Magazin - Archiv Bibliothek und M&#246;bel</name>
+        <tok>FH3.210</tok>
+        <x>340</x>
+        <y>600</y>
+    </room>
+    <room>
+        <name>SRMTD MTD Seminarraum</name>
+        <tok>FH3.217</tok>
+        <x>130</x>
+        <y>1230</y>
+    </room>
+
+    <!--FH3 Ebene 3-->
+    <room>
+        <name>Alumni Club SRA2 Allg. Seminarraum 2</name>
+        <tok>FH3.311</tok>
+        <x>200</x>
+        <y>1230</y>
+    </room>
+    <room>
+        <name>Dynatrace HS7</name>
+        <tok>FH3.304</tok>
+        <x>200</x>
+        <y>750</y>
+    </room>
+    <room>
+        <name>Intel HS8</name>
+        <tok>FH3.305</tok>
+        <x>200</x>
+        <y>480</y>
+    </room>
+    <room>
+        <name>WackerNeuson SRA1 KWM Seminarraum 1</name>
+        <tok>FH3.310</tok>
+        <x>400</x>
+        <y>1230</y>
+    </room>
+
+    <!--FH3 Ebene 4-->
+    <room>
+        <name>BR5 - Besprechungsraum 5 FE</name>
+        <tok>FH3.418</tok>
+        <x>370</x>
+        <y>870</y>
+    </room>
+    <room>
+        <name>PLA1 KWM+ALL Projektlabor 1</name>
+        <tok>FH3.423</tok>
+        <x>370</x>
+        <y>1200</y>
+    </room>
+    <room>
+        <name>VIP SI Labor</name>
+        <tok>FH3.424</tok>
+        <x>160</x>
+        <y>1250</y>
+    </room>
+    <room>
+        <name>VIP Infrastruktur und Server</name>
+        <tok>FH3.425</tok>
+        <x>140</x>
+        <y>1130</y>
+    </room>
+
+    <!--FH3 Ebene 5-->
+    <room>
+        <name>B&#252;ro IT, Helpdesk</name>
+        <tok>FH3.504</tok>
+        <x>140</x>
+        <y>870</y>
+    </room>
+    <room>
+        <name>B&#252;ro IT, Helpdesk</name>
+        <tok>FH3.518</tok>
+        <x>400</x>
+        <y>870</y>
+    </room>
+    <room>
+        <name>SRA3 SI Seminarraum 3</name>
+        <tok>FH3.523</tok>
+        <x>400</x>
+        <y>1200</y>
+    </room>
+    <room>
+        <name>SRA4 Allg. Seminarraum 4</name>
+        <tok>FH3.524</tok>
+        <x>280</x>
+        <y>1250</y>
+    </room>
+    <room>
+        <name>SRA5 Allg. Seminarraum 5</name>
+        <tok>FH3.525</tok>
+        <x>140</x>
+        <y>1200</y>
+    </room>
+
+    <!-- TEMPLATE
+     <room>
+         <name></name>
+         <tok></tok>
+         <x></x>
+         <y></y>
+     </room>
+     -->
 </rooms>

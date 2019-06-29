@@ -62,7 +62,8 @@
                     android:id="@+id/fragment_timetable_text_appointment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your next appointment is:" />
+                    android:text="Your next appointment is:"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/fragment_timetable_text_room"

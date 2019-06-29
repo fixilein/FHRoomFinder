@@ -25,4 +25,5 @@
     <string name="appointment_next">Nächster Termin: %s</string>
     <string name="appointment_now">Jetzt: %s</string>
     <string name="error_cannot_find_room">Dieser Raum kann leider nicht gefunden werden. :(</string>
+    <string name="timetable_reminder">"Um die Stundenplan-Einbindung zu aktivieren, drücke auf die 3 Punkte und auf Einstellungen. "</string>
 </resources>
