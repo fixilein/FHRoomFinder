@@ -103,11 +103,16 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                     break;
                 }
             }
-
-            tvRoom.setText(String.format(getString(R.string.appointment_location), mRoom.getName(), mRoom.getToken()));
-            bLocate.setText(String.format(getString(R.string.appointment_find_button), mRoom.getName()));
-            bLocate.setEnabled(true);
-            bRefresh.setEnabled(true);
+            if (!tok.equals("undefined")) {
+                tvRoom.setText(String.format(getString(R.string.appointment_location), mRoom.getName(), mRoom.getToken()));
+                bLocate.setText(String.format(getString(R.string.appointment_find_button), mRoom.getName()));
+                bLocate.setEnabled(true);
+                bRefresh.setEnabled(true);
+            } else {
+                tvRoom.setText("");
+                bLocate.setVisibility(View.GONE);
+                bRefresh.setEnabled(true);
+            }
 
 
         } else {
@@ -140,6 +145,8 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
      */
     private String stringToTok(String _s) {
         int startIndex = _s.indexOf("(FH");
+        if (startIndex == -1)
+            return "undefined";
         String substring = _s.substring(startIndex);
 
         String name = _s.replace(_s.substring(startIndex - 1), "");
